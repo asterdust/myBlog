@@ -6,18 +6,17 @@
 	<!-- Bootstrap core CSS -->
 	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<!-- Custom styles for this template -->
-	<link rel="stylesheet" href="/Blog/css/public.css" />
-	<link rel="stylesheet" href="/Blog/css/login.css" />
+	<link rel="stylesheet" href="/static/css/public.css" />
+	<link rel="stylesheet" href="/static/css/login.css" />
 </head>
 <body>
 <div class="container">
 	<form
-			action="/Blog/LoginServlet"
+			action="/LoginServlet"
 			method="post">
-
-		<h1>
-			<a href="/Blog/index.jsp">MyBlog</a>
-		</h1>
+        <h1>
+            <a href="/index.jsp">MyBlog</a>
+        </h1>
 
 		<label
 				for="input"
@@ -47,21 +46,14 @@
 				class="btn btn-lg btn-primary btn-block"
 				type="submit"
 				id="submit">登录</button>
-
-		<a
-				class="visitor"
-				href="/Blog/index.jsp">访客登录</a>
 	</form>
 </div>
 
-
 <div id="footer">
-	<a target="_blank"
-	   href="https://github.com/Lemonreds">
-		<img src="/Blog/img/github.png"
-			 width="22px"
-			 height="22px" class="img-circle">GitHub</a>
-	by lemonreds.
+	By MLQS team
+	<br>
+	with <a target="_blank"
+	   href="https://blog.imiku.moe/">iMIKU.moe</a> &reg;
 </div>
 <!-- footer -->
 </body>
