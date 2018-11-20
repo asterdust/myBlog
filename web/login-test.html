@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>登录 | MyBlog</title>
+
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="/static/css/public.css" />
+	<link rel="stylesheet" href="/static/css/login.css" />
+	<link rel="stylesheet" id="abc_style-css" href="https://www.mygalgame.com/wp-content/plugins/advanced-browser-check/css/style.css?ver=17.8" type="text/css" media="all">
+	<link rel="stylesheet" id="bootstrap-style-css" href="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/css/bootstrap.css?ver=1.0.1" type="text/css" media="all">
+	<link rel="stylesheet" id="fontawesome-style-css" href="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/font-awesome/css/font-awesome.min.css?ver=4.0.1" type="text/css" media="all">
+	<link rel="stylesheet" id="mystyle-css" href="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/css/myblog.css?ver=1.0.25" type="text/css" media="all">
+	<link rel="stylesheet" id="fontawesome-style-css" href="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/font-awesome/css/font-awesome.min.css?ver=4.0.1" type="text/css" media="all">
+	<link rel="stylesheet" id="mystyle-css" href="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/css/myblog.css?ver=1.0.25" type="text/css" media="all">
+
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-includes/js/jquery/jquery.js?ver=1.12.4"></script>
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.1"></script>
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/bootstrap.js?ver=1.0.1"></script>
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/jquery.icheck.js?ver=1.0.1"></script>
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/jquery.validate.js?ver=1.9.0"></script>
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/jquery.lazyload.min.js?ver=1.9.3"></script>
+	<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/myblog.js?ver=2.0.2"></script>
+	<!-- Content Protector plugin v. 2.11 CSS -->
+	<style type="text/css">
+		div.content-protector-access-form {
+		padding: 0px;
+		border-style: dashed;
+		border-color: #6b69d6;
+		border-width: 2px;
+		border-radius: 5px;
+	}
+
+	input.content-protector-form-submit {
+		color: #ffffff;
+		background-color: #db3636;
+	}
+
+	div.content-protector-correct-password {
+		font-weight: 400;
+	}
+
+	div.content-protector-incorrect-password {
+		color: #e81414;
+		font-weight: 700;
+	}
+
+	div.content-protector-ajaxLoading {
+		font-weight: 400;
+	}
+
+div.content-protector-form-instructions {
+	font-weight: 700;
+}
+</style>
+	<!-- Content Protector plugin v. 2.11 Additional CSS -->
+	<style type="text/css">
+	/* These styles will be applied to the Content Protector access form whose identifier is &quot;pass&quot;. */
+	#content-protector-access-form-pass {
+		/* CSS styles for the entire form */
+	}
+
+	#content-protector-form-instructions-pass {
+		/* CSS styles for the form instructions */
+	}
+
+	#content-protector-correct-password-pass {
+		/* CSS styles for the message when the correct password is entered */
+	}
+
+	#content-protector-incorrect-password-pass {
+		/* CSS styles for the error message for an incorrect password */
+	}
+
+	input.content-protector-form-submit {
+		border:1px solid transparent;
+		border-radius:4px;
+	}
+
+	#content-protector-captcha-img-pass {
+		margin:0;
+	}
+	</style>
+	<style type="text/css">
+		.cb-slideshow li:nth-child(1) span {
+			background-image: url(https://ws3.sinaimg.cn/large/005ODKsIgw1faoiwhzysnj31hc0xcdlw.jpg);
+		}
+
+		.cb-slideshow li:nth-child(2) span {
+			background-image: url(https://ws4.sinaimg.cn/large/005ODKsIgw1fatjjiky2vj31hc149jy5.jpg);
+		}
+
+		.cb-slideshow li:nth-child(3) span {
+			background-image: url(https://ws1.sinaimg.cn/large/005ODKsIgw1fak0crn7mgj31hc124wkw.jpg);
+		}
+
+		.cb-slideshow li:nth-child(4) span {
+			background-image: url(https://ws1.sinaimg.cn/large/005ODKsIgw1faol6dulecj31hc0u0n23.jpg);
+		}
+
+		.cb-slideshow li:nth-child(5) span {
+			background-image: url(https://ws4.sinaimg.cn/large/005ODKsIgw1fatjc2zqluj31hc0u07bh.jpg);
+		}
+
+		.cb-slideshow li:nth-child(6) span {
+			background-image: url(https://ws4.sinaimg.cn/large/005ODKsIgw1fakykk5l0cj31hc0u00zj.jpg);
+		}
+	</style>
+	<script src="static/js/jquery.min.js"></script>
+
+	<script>
+		$("input").onkeydown = function () {
+            $("body").css("margin-left", "-2px");
+            $("body").css("margin-top", "-2px");
+		}
+	</script>
+
+</head>
+<body class="blog">
+<div class="container">
+	<form
+			action="/LoginServlet"
+			method="post">
+		<h1>
+			<a href="/index.jsp">MyBlog</a>
+		</h1>
+
+		<label
+				for="input"
+				class="sr-only">用户名</label>
+
+		<input
+				class="form-control"
+				id="input"
+				name="username"
+				type="text"
+				placeholder="用户名"
+				required>
+
+		<label
+				for="inputPassword"
+				class="sr-only">密码</label>
+
+		<input
+				type="password"
+				id="inputPassword"
+				class="form-control"
+				placeholder="密码"
+				name="password"
+				required>
+
+		<button
+				class="btn btn-lg btn-primary btn-block"
+				type="submit"
+				id="submit">登录</button>
+
+		<a
+				class="visitor"
+				href="/index.jsp">访客登录</a>
+	</form>
+</div>
+
+
+<div id="footer">
+	Created by MLQS team |
+	<a target="_blank"
+	   href="https://blog.imiku.moe/">iMIKU.moe</a>
+</div>
+<!-- footer -->
+<link rel="stylesheet" id="content-protector_css-css" href="https://www.mygalgame.com/wp-content/plugins/content-protector/css/content-protector.css?ver=17.8" type="text/css" media="all">
+<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/myblog_bd.js?ver=1.0.3"></script>
+<canvas width="1536" height="750" style="position: fixed; top: 0px; left: 0px; pointer-events: none; z-index: 888;"></canvas>
+<script type="text/javascript" src="https://www.mygalgame.com/wp-content/themes/mygalgame/ui/js/myblog_min.js?ver=1.1.1"></script>
+
+
+</body>
+</html>
