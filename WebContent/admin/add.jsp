@@ -15,21 +15,21 @@
 <link href="signin.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="./css/add.css" />
 
-<link rel="stylesheet" href="./editormd/css/style.css" />
-<link rel="stylesheet" href="./editormd/css/editormd.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/editormd/css/style.css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/editormd/css/editormd.css" />
  
-<script src="./editormd/js/zepto.min.js"></script>
-<script src="./editormd/js/editormd.js"></script>  
+<script src="${pageContext.request.contextPath}/editormd/js/zepto.min.js"></script>
+<script src="${pageContext.request.contextPath}/editormd/js/editormd.js"></script>
 
-<script src="./js/add.js"></script>
+<script src="${pageContext.request.contextPath}/static/js/add.js"></script>
 </head>
 <body>
 	<div class="head_line"></div>
 	<div class="container" id="main">		
-				<div id="title"><h2><a href="/Blog/index.jsp">MyBlog</a></h2>					
+				<div id="title"><h2><a href="${pageContext.request.contextPath}/index.jsp">MyBlog</a></h2>
 					</div>	
 							
-		   <form action="/Blog/NewArticleServlet" method="post">
+		   <form action="${pageContext.request.contextPath}/NewArticleServlet" method="post">
 		   		
 		   		<div class="info" >
 		   		<!-- title -->
@@ -63,7 +63,7 @@
                     <textarea name="content"></textarea>
                 </div>
                 <br/>
-                <input  class="btn btn-default"  type="submit"   value="提交" />
+                <input class="btn btn-default" type="submit" value="提交" />
             </form>
 		
 		<div class="foot_line"></div>

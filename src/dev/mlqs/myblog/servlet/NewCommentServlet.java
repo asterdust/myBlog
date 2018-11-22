@@ -63,10 +63,10 @@ public class NewCommentServlet extends HttpServlet {
 		}
 
 		// 发送新的cookie
-		Cookie c = new Cookie(cookie_name, DateUtils.getFormatDate(new Date()));
-		c.setMaxAge(60 * 60);
-		c.setPath("/Blog");
-		response.addCookie(c);
+//		Cookie c = new Cookie(cookie_name, DateUtils.getFormatDate(new Date()));
+//		c.setMaxAge(60 * 60);
+//		c.setPath("");
+//		response.addCookie(c);
 
 		request.setAttribute("info", info);
 		request.getRequestDispatcher("/ArticleServlet").forward(request, response);

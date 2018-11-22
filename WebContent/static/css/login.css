@@ -1,27 +1,42 @@
 body {
-	background: #eee;
+    background: url("/static/img/1.png");
+    animation-name:myfirst;
+    animation-duration:12s;
+    /*变换时间*/
+    animation-delay:2s;
+    /*动画开始时间*/
+    animation-iteration-count:infinite;
+    /*下一周期循环播放*/
+    animation-play-state:running;
+    /*动画开始运行*/
 }
 
-.container {
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	width: 340px;
-	height: 400px;
-	margin-left: -170px;
-	margin-top: -200px;
-	text-align: center;
+@keyframes myfirst {
+    0%   {background:url("/static/img/1.png");}
+    34%  {background:url("/static/img/2.png");}
+    67%  {background:url("/static/img/3.png");}
+    100% {background:url("/static/img/4.png");}
 }
 
-#input, #inputpassword {
-	margin: 10px 0;
+.form{
+    background: rgba(255,255,255,0.6);
+    width: 400px;
+    margin: 120px auto;
+    padding-top: 60px;
+    padding-bottom: 60px;
 }
 
-#submit {
-	margin-top: 10px;
+/*阴影*/
+.fa {
+    display: inline-block;
+    top: 27px;
+    left: 6px;
+    position: relative;
+    color: #ccc;
 }
 
-.visitor {
-	display: inline-block;
-	margin-top: 20px;
+input[type="text"], input[type="password"] {
+    padding-left: 26px;
+    display: inline;
+    width: 200px;
 }

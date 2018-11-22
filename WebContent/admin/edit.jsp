@@ -19,17 +19,17 @@
 <link rel="stylesheet" href="./editormd/css/editormd.css" />
  
 <script src="./editormd/js/zepto.min.js"></script>
-<script src="./editormd/js/editormd.js"></script>  
+<script src="./editormd/js/editormd.js"></script>
 
 <script src="./js/add.js"></script>
 </head>
 <body>
 	<div class="head_line"></div>
 	<div class="container" id="main">		
-				<div id="title"><h2><a href="/Blog/index.jsp">MyBlog</a></h2>					
+				<div id="title"><h2><a href="/index.jsp">MyBlog</a></h2>
 					</div>	
 							
-		   <form action="/Blog/UpdateServlet" method="post">
+		   <form action="/UpdateServlet" method="post">
 		   		
 		   		<div class="info" >
 		   		<!-- id -->

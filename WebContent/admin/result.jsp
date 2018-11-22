@@ -8,11 +8,9 @@
 <link
 	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
 	rel="stylesheet">
-<!-- Custom styles for this template -->
-<link href="signin.css" rel="stylesheet">
 
 <!-- 引入页面公共样式 -->
-<link type="text/css" rel="stylesheet" href="/Blog/css/public.css" />
+<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/css/public.css" />
 
 </head>
 <body>
@@ -26,17 +24,15 @@
 					</h4>
 				</c:when>
 				<c:otherwise>
-					<h4>成功!是否现在查看文章<a href="/Blog/ArticleServlet?id=${article.id}">${article.title}</a></h4>
+					<h4>成功!是否现在查看文章<a href="${pageContext.request.contextPath}/ArticleServlet?id=${article.id}">${article.title}</a></h4>
 				</c:otherwise>
-			</c:choose>	
-		
-			
-		</div>		
+			</c:choose>
+		</div>
 		<div class="foot_line"></div>
 	</div>	
 	<!-- container -->
 	<div id="footer">
-		<a href="/Blog/index.jsp">&nbsp;&nbsp;MyBlog</a>
+		<a href="${pageContext.request.contextPath}/index.jsp">&nbsp;&nbsp;MyBlog</a>
 	</div>
 	<!-- footer -->
 </body>
