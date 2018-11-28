@@ -71,6 +71,17 @@
 						<td><a href="/about.html"><span class="glyphicon glyphicon-user"></span>
 							&nbsp;&nbsp;关于</a></td>
 					</tr>
+
+
+					<!-- admin here -->
+					<c:if test="${sessionScope.user!=null}">
+
+						<tr>
+							<td><a href="/AdminServlet"><span class="glyphicon glyphicon-user"></span>
+								&nbsp;&nbsp;管理</a></td>
+						</tr>
+					</c:if>
+					<!--  -->
 				</table>
 			</div>
 			<!-- list -->
@@ -124,16 +135,6 @@
 			</div><!-- tag -->
 
 
-			<!-- admin here -->
-			<c:if test="${sessionScope.user!=null}">
-				<a href="/AddServlet">
-					<span class="glyphicon glyphicon-plus">&nbsp;&nbsp;写新文章&nbsp;&nbsp;</span>
-				</a>
-				<a href="/AdminServlet">
-					<span class="glyphicon glyphicon glyphicon-user">&nbsp;&nbsp;管理更多&nbsp;&nbsp;</span>
-				</a>
-			</c:if>
-			<!--  -->
 
 		</div>
 		<div class="col-md-2" id="center_content">

@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet Filter implementation class CodeFilter
  */
-@WebFilter(filterName = "codeFilter", urlPatterns = { "/*" })
+@WebFilter(filterName = "codeFilter", urlPatterns = { "*" })
 public class CodeFilter implements Filter {
 
     public CodeFilter() {
@@ -31,15 +31,13 @@ public class CodeFilter implements Filter {
 
         HttpServletRequest rq = (HttpServletRequest) request;
         HttpServletResponse rp = (HttpServletResponse) response;
-        if (!rq.getRequestURL().toString().matches(".*\\.html")){
-            rq.setCharacterEncoding("utf-8");
-            rp.setCharacterEncoding("utf-8");
-            rp.setContentType("text/html;charset=utf-8");
+        rq.setCharacterEncoding("utf-8");
+        rp.setCharacterEncoding("utf-8");
+        rp.setContentType("text/html;charset=utf-8");
 
-            rp.setHeader("Cache-Control", "no-cache");
-            rp.setHeader("Pragma", "no-cache");
-            rp.setDateHeader("expires", -1);
-        }
+        rp.setHeader("Cache-Control", "no-cache");
+        rp.setHeader("Pragma", "no-cache");
+        rp.setDateHeader("expires", -1);
 
         chain.doFilter(request, response);
     }

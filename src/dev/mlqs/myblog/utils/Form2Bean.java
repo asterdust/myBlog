@@ -18,11 +18,14 @@ public class Form2Bean {
 		int id = Integer.valueOf(request.getParameter("id"));
 
 		String nickname = request.getParameter("w_nickname");
+		String email = request.getParameter("w_email");
 		String content = request.getParameter("w_content");
 
 		Comment bean = new Comment();
 		bean.setArticle_id(id);
 		bean.setNickname(nickname);
+		bean.setEmail(email);
+		bean.setEmail_hash(GravatarUtils.md5Hex(email));
 		bean.setContent(content);
 		if (vilidate(bean)) {
 			bean.setDiss(0);

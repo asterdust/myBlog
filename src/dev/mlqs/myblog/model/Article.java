@@ -7,130 +7,148 @@ import java.util.Date;
 
 public class Article implements Comparable {
 
-	private int id;
-	private String title;
-	private String author;
-	private String sort;
-	private String time;
-	private int star;
-	private int comment;
-	private int visit;
-	private String content;
+    private int id;
+    private String title;
+    private String author;
+    private String sort;
+    private String time;
+    private int star;
+    private int comment;
+    private int visit;
+    private String content;
+    private String content_safe;
 
-	public Article() {
+    public Article() {
 
-	}
+    }
 
-	public Article(int id, String title, String author, String sort, String time, int star, int comment, int visit,
-			String content) {
-		super();
-		this.id = id;
-		this.title = title;
-		this.author = author;
-		this.sort = sort;
-		this.time = time;
-		this.star = star;
-		this.comment = comment;
-		this.visit = visit;
-		this.content = content;
-	}
+    public Article(int id, String title, String author, String sort, String time, int star, int comment, int visit,
+                   String content) {
+        super();
+        this.id = id;
+        this.title = title;
+        this.author = author;
+        this.sort = sort;
+        this.time = time;
+        this.star = star;
+        this.comment = comment;
+        this.visit = visit;
+        this.content = content;
+        this.content_safe = check(content);
+    }
 
-	@Override
-	public int compareTo(Object o) {
-		if (o instanceof Article) {
-			Article article = (Article) o;
+    private String check(String str) {
+        if (str == null) return null;
+        str = str.replaceAll("\"", "&quot;");
+        str = str.replaceAll(" ", "&nbsp;");
+        str = str.replaceAll("<", "&lt;");
+        str = str.replaceAll(">", "&gt;");
+        str = str.replaceAll("\n", "&#10;");
+        str = str.replaceAll("\r", "");
+        return str.replaceAll("&", "&amp;");
+    }
 
-			Date this_date = null;
-			Date other_date = null;
-			try {
-				this_date = DateUtils.getDate(this.time);
-				other_date = DateUtils.getDate(article.getTime());
-			} catch (ParseException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+    @Override
+    public int compareTo(Object o) {
+        if (o instanceof Article) {
+            Article article = (Article) o;
 
-			return -this_date.compareTo(other_date);
-		}
-		return 0;
-	}
+            Date this_date = null;
+            Date other_date = null;
+            try {
+                this_date = DateUtils.getDate(this.time);
+                other_date = DateUtils.getDate(article.getTime());
+            } catch (ParseException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
 
-	public int getId() {
-		return id;
-	}
+            return -this_date.compareTo(other_date);
+        }
+        return 0;
+    }
 
-	@Override
-	public String toString() {
-		return "Article [id=" + id + ", title=" + title + ", author=" + author + ", sort=" + sort + ", time=" + time
-				+ ", star=" + star + ", comment=" + comment + ", visit=" + visit + ", content=" + content + "]";
-	}
+    public int getId() {
+        return id;
+    }
 
-	public void setId(int id) {
-		this.id = id;
-	}
+    @Override
+    public String toString() {
+        return "Article [id=" + id + ", title=" + title + ", author=" + author + ", sort=" + sort + ", time=" + time
+                + ", star=" + star + ", comment=" + comment + ", visit=" + visit + ", content=" + content + "]";
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public void setId(int id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public String getAuthor() {
-		return author;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setAuthor(String author) {
-		this.author = author;
-	}
+    public String getAuthor() {
+        return author;
+    }
 
-	public String getSort() {
-		return sort;
-	}
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 
-	public void setSort(String sort) {
-		this.sort = sort;
-	}
+    public String getSort() {
+        return sort;
+    }
 
-	public String getTime() {
-		return time;
-	}
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
 
-	public void setTime(String time) {
-		this.time = time;
-	}
+    public String getTime() {
+        return time;
+    }
 
-	public int getStar() {
-		return star;
-	}
+    public void setTime(String time) {
+        this.time = time;
+    }
 
-	public void setStar(int star) {
-		this.star = star;
-	}
+    public int getStar() {
+        return star;
+    }
 
-	public int getComment() {
-		return comment;
-	}
+    public void setStar(int star) {
+        this.star = star;
+    }
 
-	public void setComment(int comment) {
-		this.comment = comment;
-	}
+    public int getComment() {
+        return comment;
+    }
 
-	public int getVisit() {
-		return visit;
-	}
+    public void setComment(int comment) {
+        this.comment = comment;
+    }
 
-	public void setVisit(int visit) {
-		this.visit = visit;
-	}
+    public int getVisit() {
+        return visit;
+    }
 
-	public String getContent() {
-		return content;
-	}
+    public void setVisit(int visit) {
+        this.visit = visit;
+    }
 
-	public void setContent(String content) {
-		this.content = content;
-	}
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+        this.content_safe = check(content);
+    }
+
+    public String getContent_safe() {
+        return content_safe;
+    }
 
 }

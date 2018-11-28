@@ -11,6 +11,7 @@ import dev.mlqs.myblog.dao.CommentDao;
 import dev.mlqs.myblog.db.C3P0Connection;
 import dev.mlqs.myblog.model.Comment;
 import dev.mlqs.myblog.utils.DBUtils;
+import dev.mlqs.myblog.utils.GravatarUtils;
 
 public class CommentDaoImpl implements CommentDao {
 
@@ -90,7 +91,7 @@ public class CommentDaoImpl implements CommentDao {
 	public boolean addComment(Comment comment) {
 
 		Connection conn = C3P0Connection.getInstance().getConnection();
-		String sql = "INSERT  INTO t_comment VALUES(null,?,?,?,?,?,?)";
+		String sql = "INSERT  INTO t_comment VALUES(null,?,?,?,?,?,?,?)";
 		int result = 0;
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -98,8 +99,9 @@ public class CommentDaoImpl implements CommentDao {
 			ps.setString(2, comment.getNickname());
 			ps.setString(3, comment.getContent());
 			ps.setString(4, comment.getTime());
-			ps.setInt(5, comment.getStar());
-			ps.setInt(6, comment.getDiss());
+			ps.setString(5, comment.getEmail());
+			ps.setInt(6, comment.getStar());
+			ps.setInt(7, comment.getDiss());
 			result = ps.executeUpdate();
 
 			// 文章加1评论
@@ -137,6 +139,8 @@ public class CommentDaoImpl implements CommentDao {
 				cm.setArticle_id(rs.getInt("article_id"));
 				cm.setNickname(rs.getString("nickname"));
 				cm.setTime(rs.getString("time"));
+				cm.setEmail(rs.getString("email"));
+				cm.setEmail_hash(GravatarUtils.md5Hex(cm.getEmail()));
 				cm.setStar(rs.getInt("star"));
 				cm.setContent(rs.getString("content"));
 				cm.setDiss(rs.getInt("diss"));

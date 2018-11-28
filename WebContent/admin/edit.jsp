@@ -15,13 +15,13 @@
 <link href="signin.css" rel="stylesheet">
 <link type="text/css" rel="stylesheet" href="./css/add.css" />
 
-<link rel="stylesheet" href="./editormd/css/style.css" />
-<link rel="stylesheet" href="./editormd/css/editormd.css" />
+<link rel="stylesheet" href="/editormd/css/style.css" />
+<link rel="stylesheet" href="/editormd/css/editormd.css" />
  
-<script src="./editormd/js/zepto.min.js"></script>
-<script src="./editormd/js/editormd.js"></script>
+<script src="/editormd/js/zepto.min.js"></script>
+<script src="/editormd/js/editormd.js"></script>
 
-<script src="./js/add.js"></script>
+<script src="/static/js/add.js"></script>
 </head>
 <body>
 	<div class="head_line"></div>
@@ -85,7 +85,7 @@
 					testEditor = editormd("mdView", {
 						width  : "90%",
 						height : 720,
-						path   : './editormd/lib/',
+						path   : '/editormd/lib/',
                         codeFold : true,
                         searchReplace : true,
                         saveHTMLToTextarea : true,    // 保存 HTML 到 Textarea                   

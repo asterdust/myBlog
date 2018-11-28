@@ -10,13 +10,15 @@ public class Comment {
 	private String nickname;
 	private String content;
 	private String time;
+	private String email;
+	private String email_hash;
 	private int star;
 	private int diss;
 
 	@Override
 	public String toString() {
 		return "Comment [id=" + id + ", parent_id=" + article_id + ", nickname=" + nickname + ", content=" + content
-				+ ", time=" + time + ", star=" + star + ", diss=" + diss + "]";
+				+ ", time=" + time + ", email=" + email + ", star=" + star + ", diss=" + diss + "]";
 	}
 
 	public int getId() {
@@ -75,4 +77,19 @@ public class Comment {
 		this.diss = diss;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getEmail_hash() {
+		return email_hash;
+	}
+
+	public void setEmail_hash(String email_hash) {
+		this.email_hash = email_hash;
+	}
 }

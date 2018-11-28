@@ -29,7 +29,7 @@ public class ArticleUtils {
 	/**
 	 * 处理下时间
 	 * 
-	 * @param Article
+	 * @param a
 	 * @return
 	 */
 	public static Article cutTime(Article a) {
