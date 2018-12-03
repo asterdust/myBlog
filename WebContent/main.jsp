@@ -6,11 +6,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>首页 | MyBlog</title>
-	<!-- Bootstrap core CSS -->
-	<link	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
 
-	<link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/static/css/main.css" />
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+	<link type="text/css" rel="stylesheet" href="/static/css/public.css" />
+	<link type="text/css" rel="stylesheet" href="/static/css/main.css" />
 </head>
 <body>
 <div class="head_line"></div>
@@ -53,23 +53,23 @@
 				<table class="table table-hover c_center">
 					<tr class="active">
 						<td><a href="/index.jsp"><span class="glyphicon glyphicon-home"></span>
-							&nbsp;&nbsp;首页</a></td>
+							首页</a></td>
 					</tr>
 					<tr>
 						<td><a href="/SortServlet?get=all"><span class="glyphicon glyphicon-list"></span>
-							&nbsp;&nbsp;分类</a></td>
+							分类</a></td>
 					</tr>
 					<tr>
 						<td><a href="/TagsServlet?get=all"><span class="glyphicon glyphicon-tags"></span>
-							&nbsp;&nbsp;标签</a></td>
+							标签</a></td>
 					</tr>
 					<tr>
 						<td><a href="/AxisServlet"><span class="glyphicon glyphicon-book"></span>
-							&nbsp;&nbsp;时间轴</a></td>
+							时间轴</a></td>
 					</tr>
 					<tr>
 						<td><a href="/about.html"><span class="glyphicon glyphicon-user"></span>
-							&nbsp;&nbsp;关于</a></td>
+							关于</a></td>
 					</tr>
 
 
@@ -78,7 +78,7 @@
 
 						<tr>
 							<td><a href="/AdminServlet"><span class="glyphicon glyphicon-user"></span>
-								&nbsp;&nbsp;管理</a></td>
+								管理</a></td>
 						</tr>
 					</c:if>
 					<!--  -->
@@ -98,7 +98,6 @@
 				</div>
 			</div><!-- sort -->
 
-
 			<div class="visit">
 				<div class="list-group">
 					<span class="list-group-item active">阅读排行</span>
@@ -110,8 +109,7 @@
 				</div>
 			</div><!-- visit-->
 
-
-			<div id="tag">
+			<div id="tag" style="margin-top: 0 !important;">
 				<div class="list-group">
 					<span class="list-group-item active">标签</span>
 					<br/>
@@ -130,17 +128,11 @@
 						</c:choose>
 
 					</c:forEach>
-					<!-- 初始化标签完成 -->
 				</div>
-			</div><!-- tag -->
-
-
-
+			</div>
 		</div>
 		<div class="col-md-2" id="center_content">
 		</div>
-
-
 		<div  class="col-md-7 " id="right_Content">
 			<br />
 			<br />
@@ -150,14 +142,16 @@
 				<c:forEach var="article"   items="${article_list}" >
 					<div  class="list-group-item">
 						<h4><a href="/ArticleServlet?id=${article.id}">${article.title}</a></h4>
-						<br/>
-						<span>${article.time}&nbsp;&nbsp;|</span>
-						<a href="/SortServlet?get=${article.sort}">${article.sort}</a>&nbsp;&nbsp;|
+						<span>${article.time}&nbsp;|&nbsp;</span>
+						<a href="/SortServlet?get=${article.sort}">${article.sort}</a>&nbsp;|&nbsp;
 						<span>阅读次数: ${article.visit}</span>
-						<br/><br/>
+						<br/>
+						<br/>
+						<br/>
 						<span>${article.content}</span>
-						<br/><br/><br/>
 						<a href="/ArticleServlet?id=${article.id}">阅读全文</a>
+						<br/>
+						<br/>
 						<br/>
 					</div>
 				</c:forEach>
@@ -165,16 +159,14 @@
 			</div>
 		</div>
 	</div>
-	<div class="foot_line"></div>
 </div><!-- container -->
 
-<div id="footer">
-	<h6> 被访问了 ${visited } 次</h6>
-	<h6> 你是第 ${member}个访问者</h6>
-	By MLQS team
-	<br>
-	with <a target="_blank"
-			href="https://blog.imiku.moe/">iMIKU.moe</a> &reg;
+<div class="container">
+	<div class="foot_line"></div>
+	<div id="footer">
+		<h6> 被访问了 ${visited } 次，你是第 ${member}个访问者</h6>
+		By MLQS team | with <a target="_blank" href="https://blog.imiku.moe/">iMIKU.moe</a> &reg;
+	</div>
 </div>
 </body>
 </html>

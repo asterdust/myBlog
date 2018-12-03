@@ -17,6 +17,11 @@ public class AdminServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendError(403);
+            return;
+        }
+
 		// 传所有的文章
 		ArticleService as = ArticleService.getInstance();
 		request.setAttribute("articles", as.getArticle());

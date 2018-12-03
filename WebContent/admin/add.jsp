@@ -7,57 +7,61 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>新的文章 | MyBlog</title>
 
-
     <!-- Bootstrap core CSS -->
     <link	href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link type="text/css" rel="stylesheet" href="/static/css/add.css" />
     <link type="text/css" rel="stylesheet" href="/editormd/css/style.css" />
     <link type="text/css" rel="stylesheet" href="/editormd/css/editormd.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/css/public.css" />
+    <link type="text/css" rel="stylesheet" href="/static/css/add.css" />
 
     <script charset="utf-8" type="text/javascript" src="/editormd/js/zepto.min.js"></script>
     <script charset="utf-8" type="text/javascript" src="/editormd/js/editormd.js"></script>
     <script charset="utf-8" type="text/javascript" src="/static/js/add.js"></script>
 </head>
 <body>
-<div class="head_line"></div>
-<div class="container" id="main">
-    <div id="title"><h2><a href="${pageContext.request.contextPath}/index.jsp">MyBlog</a></h2>
+<div class="container">
+    <div id="header">
+        <div>
+            <h2><a href="/index.jsp">MyBlog</a> | <span style="font-size: small;"><a href="/AdminServlet">管理</a> > 添加文章</span></h2>
+        </div>
     </div>
+</div>
+<div class="container" id="main">
 
     <form action="${pageContext.request.contextPath}/NewArticleServlet" method="post">
 
         <div class="info" >
             <!-- title -->
             <span class="help">标题</span>
-            <input type="text" class="form-control" name="title" >
+            <input type="text" class="form-control" name="title" required >
             <!-- time -->
             <span class="help">时间</span>
-            <input type="text" id="time" class="form-control" name="time" value="${time}" >
+            <input type="text" id="time" class="form-control" name="time" value="${time}" required >
             <!-- author-->
             <span class="help">作者</span>
-            <input type="text" class="form-control" name="author" >
+            <input type="text" class="form-control" name="author" required >
             <!-- sort -->
             <span class="help">分类</span><br/>
             <c:forEach var="s"  items="${sort_count}">
                 <input class="btn btn-default" type="button" value="${s.key}" onclick="sort_click(this)"> &nbsp;
             </c:forEach>
-            <input type="text" class="form-control"  id="sort" name="sort">
+            <input type="text" class="form-control"  id="sort" name="sort" required >
 
             <!-- tag -->
             <span class="help">标签</span><br/>
             <c:forEach var="tag" items="${all_tag}">
                 <input class="btn btn-default" type="button" value="${tag.tag}" onclick="tags_click(this)">&nbsp;
             </c:forEach>
-            <input type="text" class="form-control" id="tags"  name="tags">
+            <input type="text" class="form-control" id="tags"  name="tags" required >
         </div>
 
 
         <div class="foot_line"></div>
         <!-- content -->
         <div class="editormd" id="mdView">
-            <textarea name="content"></textarea>
+            <textarea name="content" required ></textarea>
         </div>
         <br/>
         <input class="btn btn-default" type="submit" value="提交" />

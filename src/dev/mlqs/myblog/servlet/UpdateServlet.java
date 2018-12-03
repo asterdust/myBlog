@@ -18,7 +18,10 @@ public class UpdateServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		if (request.getSession().getAttribute("user") == null) {
+			response.sendError(403);
+			return;
+		}
 		AdminService as = AdminService.getInstance();
 		Article result = as.updateArticle(request);
 		request.setAttribute("article", result);

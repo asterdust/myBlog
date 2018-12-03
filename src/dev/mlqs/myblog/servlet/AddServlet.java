@@ -23,7 +23,10 @@ public class AddServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
+		if (request.getSession().getAttribute("user") == null) {
+			response.sendError(403);
+			return;
+		}
 		// 初始化时间
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = new Date();

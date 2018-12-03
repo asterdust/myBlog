@@ -48,7 +48,6 @@ public class LoginServlet extends HttpServlet {
 		request.setAttribute("member", VisitorDB.totalMember());
 
 		// 读取主页信息
-
 		ArrayList<String[]> list = XMLUtils.getNodeList(this.getClass().getResource("/").getPath() + "blog-info.xml");
 		assert list != null;
 		for (String[] vs : list) {

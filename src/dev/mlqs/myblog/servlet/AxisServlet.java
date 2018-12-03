@@ -1,6 +1,7 @@
 package dev.mlqs.myblog.servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -8,25 +9,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dev.mlqs.myblog.service.ArticleService;
+import dev.mlqs.myblog.utils.XMLUtils;
 
 @WebServlet("/AxisServlet")
 public class AxisServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
-		// 获取时间轴文章类型的数据
-		ArticleService as = ArticleService.getInstance();
-		request.setAttribute("axis_list", as.getAxisList());
+        // 获取时间轴文章类型的数据
+        ArticleService as = ArticleService.getInstance();
+        request.setAttribute("axis_list", as.getAxisList());
 
-		// 转发
-		request.getRequestDispatcher("/axis.jsp").forward(request, response);
-	}
+        // 读取主页信息
+        ArrayList<String[]> list = XMLUtils.getNodeList(this.getClass().getResource("/").getPath() + "blog-info.xml");
+        assert list != null;
+        for (String[] vs : list) {
+            request.setAttribute(vs[0], vs[1]);
+        }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+        // 转发
+        request.getRequestDispatcher("/axis.jsp").forward(request, response);
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // TODO Auto-generated method stub
+        doGet(request, response);
+    }
 
 }

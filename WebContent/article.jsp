@@ -11,7 +11,7 @@
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
     <link type="text/css" rel="stylesheet" href="/static/css/public.css" />
-    <link type="text/css" rel="stylesheet" href="/static/css/article.css?v=1" />
+    <link type="text/css" rel="stylesheet" href="/static/css/article.css" />
 
     <script type="text/javascript" charset="UTF-8" src="/static/js/article.js"></script>
 
@@ -180,8 +180,8 @@
 </div>
 
 <div class="container">
+    <div class="foot_line"></div>
     <div id="footer">
-        <div class="foot_line"></div>
         <a href="/index.jsp">MyBlog</a>
     </div>
 </div>

@@ -53,7 +53,7 @@ function findInputInClass(class_name , name){
  */
 function delete_article(hod , article_id){
     //remove 视图
-    var recorder = hod.parentNode.parentNode.parentNode;
+    var recorder = hod.parentNode.parentNode;
     var recorder_parent = recorder.parentNode;
     recorder_parent.removeChild(recorder);
     //send
