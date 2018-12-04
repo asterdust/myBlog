@@ -8,4 +8,15 @@
     <filter-name>ArticleFilter</filter-name>
     <url-pattern>/ArticleServlet</url-pattern>
   </filter-mapping>
+
+  <error-page>
+      <error-code>403</error-code>
+      <location>/NotifServlet?ec=403</location>
+  </error-page>
+
+  <error-page>
+      <error-code>404</error-code>
+      <location>/NotifServlet?ec=404</location>
+  </error-page>
+
 </web-app>

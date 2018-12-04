@@ -5,7 +5,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>管理 | MyBlog</title>
+    <title>管理 - MyBlog</title>
 
     <!-- Bootstrap core CSS -->
     <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
@@ -44,7 +44,7 @@
 <div class="container">
     <h3 id="t1">管理日志</h3>
 
-    <a class="glyphicon glyphicon-pencil" style="margin-top: 10px; margin-bottom: 10px;" href="/admin/add.jsp">新的文章</a>
+    <a style="margin-top: 10px; margin-bottom: 10px;" href="/admin/add.jsp"><span class="glyphicon glyphicon-pencil"></span>新的文章</a>
     <table style="width: 100%;">
         <c:forEach var="a" items="${articles}">
             <tr class="list-group-item row clearfix">
@@ -52,11 +52,11 @@
                 <td class="col-md-2 column">${a.time}</td>
                 <td class="col-md-1 column">
                     <a href="${pageContext.request.contextPath}/AdminDataServlet?op=edit_article&&article_id=${a.id}">
-                        <button class="btn btn-default glyphicon glyphicon-pencil" style="color:#5bc0de">编辑</button>
+                        <button class="btn btn-default" style="color:#5bc0de"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
                     </a>
                 </td>
                 <td class="col-md-1 column">
-                    <button class="btn btn-default glyphicon glyphicon-trash" style="color:#d9534f" onclick="delete_article(this,'${a.id}')">删除</button>
+                    <button class="btn btn-default" style="color:#d9534f" onclick="delete_article(this,'${a.id}')"><span class="glyphicon glyphicon-trash"></span>删除</button>
                 </td>
             </tr>
         </c:forEach>
@@ -70,10 +70,10 @@
             <tr class="list-group-item row clearfix">
                 <td class="col-md-10 sort column"><input class="tags" disabled value="${s}"></td>
                 <td class="col-md-1 column">
-                    <button class="btn btn-default glyphicon glyphicon-pencil" style="color:#5bc0de;" onclick="edit_sort(this,'${s}')">编辑</button>
+                    <button class="btn btn-default" style="color:#5bc0de;" onclick="edit_sort(this,'${s}')"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
                 </td>
                 <td class="col-md-1 column">
-                    <button class="btn btn-default glyphicon glyphicon-trash" style="color:#d9534f;" onclick="delet_sort(this,'${s}')">删除</button>
+                    <button class="btn btn-default" style="color:#d9534f;" onclick="delet_sort(this,'${s}')"><span class="glyphicon glyphicon-trash"></span>删除</button>
                 </td>
             </tr>
         </c:forEach>
@@ -87,10 +87,10 @@
             <tr class="list-group-item row clearfix">
                 <td class="col-md-10 sort column"><input class="tags" disabled value="${t.tag}"></td>
                 <td class="col-md-1 column">
-                    <button class="btn btn-default glyphicon glyphicon-pencil" style="color:#5bc0de;" onclick="edit_tag(this,'${t.tag}')">编辑</button>
+                    <button class="btn btn-default" style="color:#5bc0de;" onclick="edit_tag(this,'${t.tag}')"><span class="glyphicon glyphicon-pencil"></span>编辑</button>
                 </td>
                 <td class="col-md-1 column">
-                    <button class="btn btn-default glyphicon glyphicon-trash" style="color:#d9534f;" onclick="delet_tag(this,'${t.tag}')">删除</button>
+                    <button class="btn btn-default" style="color:#d9534f;" onclick="delet_tag(this,'${t.tag}')"><span class="glyphicon glyphicon-trash"></span>删除</button></button>
                 </td>
             </tr>
         </c:forEach>
@@ -98,8 +98,8 @@
 </div>
 
 <div class="container">
+    <div class="foot_line"></div>
     <div id="footer">
-        <div class="foot_line"></div>
         <a href="/index.jsp">MyBlog</a>
     </div>
 </div>

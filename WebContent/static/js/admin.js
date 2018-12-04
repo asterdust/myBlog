@@ -1,4 +1,4 @@
-/*
+﻿/*
 * 获取ajax处理对象
  * @returns {xmlhttp}
  */
@@ -22,7 +22,7 @@ function sendURL(url){
 //		if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
 //			//这里可以写 服务器返回解结果后的处理
 //		}
-    }
+    };
     xmlhttp.open("POST", url, true);
     xmlhttp.send();
 }
@@ -53,7 +53,7 @@ function findInputInClass(class_name , name){
  */
 function delete_article(hod , article_id){
     //remove 视图
-    var recorder = hod.parentNode.parentNode.parentNode;
+    var recorder = hod.parentNode.parentNode;
     var recorder_parent = recorder.parentNode;
     recorder_parent.removeChild(recorder);
     //send

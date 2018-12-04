@@ -145,7 +145,7 @@ public class ArticleService {
 	 * 
 	 * @return
 	 */
-	public List getArticle() {
+	public List<Article> getArticle() {
 		List<Article> list = dao.getAllArticle();
 		for (Article a : list) {
 			ArticleUtils.cutContent(list);

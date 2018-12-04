@@ -1,4 +1,4 @@
-
+﻿
 /*
 * 获取ajax处理对象
  * @returns {xmlhttp}
@@ -44,7 +44,7 @@ function love_article(article_id){
  */
 function deletecm(component,comm_id){
     var container = component.parentNode.parentNode;
-    var url = "/CMDeleServlet?id="+comm_id ;
+    var url = "/CMDeleServlet?id="+comm_id;
     // 获取ajax
     var xmlhttp = getXHR();
     xmlhttp.onreadystatechange = function() {
@@ -58,6 +58,12 @@ function deletecm(component,comm_id){
                 //删除评论的视图
                 var p = container.parentNode;
                 p.removeChild(container);
+            }
+            else if (res.msg === "illegal") {
+                alert("删除失败，请先登录");
+            }
+            else {
+                alert("删除失败");
             }
         }
     };

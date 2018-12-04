@@ -1,189 +1,139 @@
-<%@ page contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core"  prefix="c" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<html lang="zh_CN">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>${article.title} | MyBlog</title>
-    <!-- Bootstrap core CSS -->
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <link type="text/css" rel="stylesheet" href="/static/css/public.css" />
-    <link type="text/css" rel="stylesheet" href="/static/css/article.css?v=1" />
-
-    <script type="text/javascript" charset="UTF-8" src="/static/js/article.js"></script>
-
+    <title>${article.title} - ${title}</title>
+    <jsp:include page="part/front.jsp"/>
 </head>
+
 <body>
+<jsp:include page="part/header.jsp"/>
 
-<div class="container">
-    <div id="header">
-        <div>
-            <h2><a href="/index.jsp">MyBlog</a> | <span style="font-size: small;">文章</span></h2>
-        </div>
-    </div>
-</div>
-
-<div class="container">
+<div class="container vc-container">
     <div class="row">
-        <div class="col-md-12 column">
-            <h3>
-                ${article.title}
-            </h3>
-            <div class="line"></div>
-            <div class="row">
-                <div class="col-md-4 column">
-                </div>
-                <div class="col-md-4 column">
-                    <span>${article.time}</span>
-                    &nbsp;
-                    <a href="/SortServlet?get=${article.sort}">${article.sort}</a>
-                    &nbsp;
-                    ${article.author}
-                </div>
-                <div class="col-md-4 column">
-                    <span class="glyphicon glyphicon-eye-open"></span>
-                    <span>${article.visit}</span>
-                    <span class="glyphicon glyphicon-heart" id="love"></span>
-                    <span>${article.star}</span>
-                    <span class="glyphicon glyphicon-comment"></span>
-                    <span>${article.comment}</span>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12 column">
-                    <c:forEach var="t" items="${article_tags}">
-                        <a href="/TagsServlet?get=${t.tag}">${t.tag}&nbsp;</a>
-                    </c:forEach>
-                </div>
-            </div>
-            <%--<iframe src="/show.jsp" frameborder="0"></iframe>--%>
-        </div>
-
-        <div class="container">
-            <div id="aaaaaaaaa">
-
-                <%--<iframe id="a_content" src="/show.jsp" frameborder="0"></iframe>--%>
-                <%--<script>--%>
-                <%--var _iframe = document.getElementById("a_content");--%>
-                <%--if (_iframe.attachEvent) {--%>
-                <%--_iframe.attachEvent("onload", function() {--%>
-                <%--_iframe.contentDocument.documentElement.getElementsByTagName("textarea").item(0).setAttribute("value", "${article.content_safe}");--%>
-                <%--_iframe.contentDocument.documentElement.getElementsByTagName("button").item(0).click();--%>
-                <%--});--%>
-                <%--} else {--%>
-                <%--_iframe.onload = function() {--%>
-                <%--_iframe.contentDocument.documentElement.getElementsByTagName("textarea").item(0).setAttribute("value", "${article.content_safe}");--%>
-                <%--_iframe.contentDocument.documentElement.getElementsByTagName("button").item(0).click();--%>
-                <%--};--%>
-                <%--}--%>
-                <%--</script>--%>
-                <jsp:include page="/show.jsp"/>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4 column">
-                    <span class="glyphicon glyphicon-chevron-left"></span>
-                    <c:choose>
-                        <c:when test="${article_pre!=null}">
-                            <a href="/ArticleServlet?id=${article_pre.id}">&nbsp;上一篇:${article_pre.title}</a>
-                        </c:when>
-                        <c:otherwise>
-                            &nbsp;没有更早的文章了
-                        </c:otherwise>
-                    </c:choose>
-                </div>
-                <div class="col-md-4 column">
-                    <div>
-                        <span class="btn btn-default" style="color:#d9534f;"  onclick="love_article(${article.id})" >点赞</span>
+        <div class="col-sm-12 col-md-9">
+            <!-- CODE START -->
+            <div class="panel panel-default">
+                <article class="vc-blog">
+                    <h1 class="vc-blog-title">${article.title}</h1>
+                    <p class="vc-author-info">
+                        <time>${article.time}</time> &bull; <span>${article.author}</span> &bull; <span>${article.visit}次浏览</span>
+                    </p>
+                    <div class="vc-blog-content">
+                        <img src="${header_img}" alt="">
+                        <jsp:include page="/part/editmd.jsp"/>
                     </div>
+                    <span class="vc-tags">
+                        <c:forEach var="t" items="${article_tags}">
+                            <a href="/TagsServlet?get=${t.tag}">${t.tag}</a>
+                        </c:forEach>
+                    </span>
+                    <%--<div class="vc-copyright">--%>
+                    <%--本站文章除注明转载外，均为原创文章。转载请注明：文章转载自：VICCHEN.ME（<a href="http://vicchen.me/">http://vicchen.me/</a>）--%>
+                    <%--</div>--%>
+                </article>
+            </div>
+            <nav>
+                <ul class="pager">
+                    <li class="previous">
+                        <c:choose>
+                            <c:when test="${article_pre!=null}">
+                                <a href="/ArticleServlet?id=${article_pre.id}"><i class="fa fa-angle-left"></i> 上一篇:${article_pre.title}</a>
+                            </c:when>
+                            <c:otherwise>
+                                <span style="cursor: no-drop"><i class="fa fa-angle-left"></i> 没有了</span>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                    <li class="next">
+                        <c:choose>
+                            <c:when test="${article_next!=null}">
+                                <a href="/ArticleServlet?id=${article_next.id}">下一篇:${article_next.title} <i class="fa fa-angle-right"></i></a>
+                            </c:when>
+                            <c:otherwise>
+                                <span style="cursor: no-drop">没有了 <i class="fa fa-angle-right"></i></span>
+                            </c:otherwise>
+                        </c:choose>
+                    </li>
+                </ul>
+            </nav>
+            <section id="comments">
+                <h3 class="vc-comments-title">${article.title} - 有${article.comment}条评论</h3>
+                <ol class="commentlist">
+                    <c:if test="${comment != null}">
+                        <c:forEach var="comm" varStatus="status" items="${comment}">
+                            <li class="comment even thread-even depth-1 parent" id="comment-1">
+                                <div id="div-comment-1" class="comment-body">
+                                    <div class="comment-author vcard">
+                                        <img src="https://www.gravatar.com/avatar/${comm.email_hash}?s=50&r=pg"
+                                             class="avatar avatar-50 photo avatar-default"
+                                             height="50"
+                                             width="50">
+                                        <cite class="fn">
+                                            <c:if test="${comm.website!=null}">
+                                                <a href="${comm.website}" rel="external nofollow" class="url">${comm.nickname}</a>
+                                            </c:if>
+                                            <c:if test="${comm.website==null}">
+                                                <span class="url">${comm.nickname}</span>
+                                            </c:if>
+                                        </cite>
+                                        <time>${comm.time}</time>
+                                    </div>
+
+                                    <div>
+                                        <pre>${comm.content}</pre>
+                                    </div>
+
+                                    <footer class="comment-footer">
+                                        <button onclick="star(this,${comm.id})">${comm.star}</button>
+                                        <button onclick="diss(this,${comm.id})">${comm.diss}</button>
+                                        <c:if test="${sessionScope.user!=null}">
+                                            <button class="comment-reply-link" style="color: red" onclick="deletecm(this,${comm.id})" aria-label="删除">删除</button>
+                                        </c:if>
+                                    </footer>
+                                </div>
+                            </li>
+                        </c:forEach>
+                    </c:if>
+                </ol>
+                <div id="respond" class="comment-respond">
+                    <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
+                    <form action="/NewCommentServlet?id=${article.id}" method="post" id="commentform" class="comment-form">
+                        <p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span>必填项已用<span class="required">*</span>标注</p>
+                        <p class="comment-form-author">
+                            <label for="nickname">姓名 <span class="required">*</span>
+                            </label>
+                            <input id="nickname" name="nickname" type="text" value="" size="30" aria-required="true" required="required">
+                        </p>
+                        <p class="comment-form-email">
+                            <label for="email">电子邮件 <span class="required">*</span>
+                            </label>
+                            <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true" required="required">
+                        </p>
+                        <p class="comment-form-url">
+                            <label for="website">站点</label>
+                            <input id="website" name="website" type="text" value="" size="30">
+                        </p>
+                        <p class="comment-form-comment">
+                            <label for="content">评论</label>
+                            <textarea id="content" name="content" rows="5" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea>
+                        </p>
+                        <p class="form-submit">
+                            <input name="submit" type="submit" id="submit" class="submit" value="发表评论">
+                        </p>
+                    </form>
                 </div>
-                <div class="col-md-4 column">
-                    <c:choose>
-                        <c:when test="${article_next!=null}">
-                            <a href="/ArticleServlet?id=${article_next.id}">下一篇:&nbsp;${article_next.title}</a>
-                        </c:when>
-                        <c:otherwise>
-                            &nbsp;没有更多的文章了
-                        </c:otherwise>
-                    </c:choose>
-                    <span class="glyphicon glyphicon-chevron-right"></span>
-                </div>
-            </div>
+            </section>
+            <!-- CODE END -->
         </div>
-        <div class="container">
-            <div class="line"></div>
-            <c:if test="${comment != null}">
-                <c:forEach var="comm" varStatus="status" items="${comment}">
-                    <div class="row">
-                        <div class="col-md-1 column">
-                            <img class="img-circle" src="https://www.gravatar.com/avatar/${comm.email_hash}?s=50&r=pg" />
-                        </div>
-
-                        <div class="col-md-2 column" style="text-align: left">
-                            <span style="color: #428bca">${comm.nickname}</span>
-                            <br>
-                            <small>${comm.email}<br>${comm.time}</small>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-1 column"></div>
-                        <div class="col-md-8 column">
-                            <div>
-                                <pre class="comment">${comm.content}</pre>
-                            </div>
-                        </div>
-                        <div class="col-md-2 column">
-                            <a><span class="glyphicon glyphicon-thumbs-up"  onclick="star(this,${comm.id})">&nbsp;${comm.star}</span></a>
-                            <a><span class="glyphicon glyphicon-thumbs-down" onclick="diss(this,${comm.id})">&nbsp;${comm.diss}</span></a>
-                        </div>
-                        <div class="col-md-1 column">
-                            <c:if test="${sessionScope.user!=null}">
-                                <span class="btn btn-default" style="color:red;" onclick="deletecm(this,${comm.id})">删除</span>
-                                &nbsp;
-                            </c:if>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-                </c:forEach>
-            </c:if>
-        </div>
-    </div>
-
-
-    <!-- 写评论 -->
-
-    <div class="container">
-
-        <form action="/NewCommentServlet?id=${article.id}" method="post">
-            <div class="form-group">
-                <label for="w_nickname" class>昵称：</label>
-                <input  style="width:30%" required class="form-control" type="text" id="w_nickname" name="w_nickname" value="网络喷子">
-            </div>
-            <div class="form-group">
-                <label for="w_email" class>邮箱：</label>
-                <input  style="width:30%" required class="form-control" type="text" id="w_email" name="w_email" placeholder="example@example.com"  >
-            </div>
-            <div class="form-group">
-                <textarea style="resize:none; width:100%; height:180px;" required name="w_content"></textarea>
-            </div>
-            <div class="form-group" style="text-align: center">
-                <input class="btn btn-default" type="submit" value="评论" onclick="onclick"/>
-            </div>
-        </form>
+        <jsp:include page="part/sideinfo.jsp"/>
     </div>
 </div>
-
-<div class="container">
-    <div id="footer">
-        <div class="foot_line"></div>
-        <a href="/index.jsp">MyBlog</a>
-    </div>
-</div>
+<jsp:include page="part/footer.jsp"/>
+<jsp:include page="part/tail.jsp"/>
+<script type="text/javascript" src="./static/js/article.js"></script>
 </body>
+
 </html>

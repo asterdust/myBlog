@@ -46,7 +46,6 @@ public class VisitFilter implements Filter {
 					}
 				}
 				if (!visited) {
-
 					Thread t = new Thread(new Runnable() {
 						public void run() {
 							// 向数据库写入信息

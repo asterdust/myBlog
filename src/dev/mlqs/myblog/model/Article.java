@@ -16,7 +16,6 @@ public class Article implements Comparable {
     private int comment;
     private int visit;
     private String content;
-    private String content_safe;
 
     public Article() {
 
@@ -34,18 +33,7 @@ public class Article implements Comparable {
         this.comment = comment;
         this.visit = visit;
         this.content = content;
-        this.content_safe = check(content);
-    }
-
-    private String check(String str) {
-        if (str == null) return null;
-        str = str.replaceAll("\"", "&quot;");
-        str = str.replaceAll(" ", "&nbsp;");
-        str = str.replaceAll("<", "&lt;");
-        str = str.replaceAll(">", "&gt;");
-        str = str.replaceAll("\n", "&#10;");
-        str = str.replaceAll("\r", "");
-        return str.replaceAll("&", "&amp;");
+//        this.content_safe = check(content);
     }
 
     @Override
@@ -144,11 +132,6 @@ public class Article implements Comparable {
 
     public void setContent(String content) {
         this.content = content;
-        this.content_safe = check(content);
-    }
-
-    public String getContent_safe() {
-        return content_safe;
     }
 
 }

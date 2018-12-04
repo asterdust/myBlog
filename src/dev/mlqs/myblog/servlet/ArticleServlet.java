@@ -16,6 +16,8 @@ import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.service.CommentService;
 import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.GravatarUtils;
+import dev.mlqs.myblog.utils.ImageUtils;
+import dev.mlqs.myblog.utils.SideInfoUtils;
 
 @WebServlet("/ArticleServlet")
 public class ArticleServlet extends HttpServlet {
@@ -40,6 +42,10 @@ public class ArticleServlet extends HttpServlet {
         CommentService cs = CommentService.getInstance();
         List list = cs.loadComment(a.getId());
         request.setAttribute("comment", list);
+
+        request.setAttribute("header_img", ImageUtils.getImg(id));
+
+        SideInfoUtils.setUp(request, this);
 
         request.getRequestDispatcher("/article.jsp").forward(request, response);
     }
