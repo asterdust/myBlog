@@ -12,3 +12,5 @@ editor.md: https://github.com/pandao/editor.md
 <br>
 菜鸟可视化编辑器: http://www.runoob.com/try/bootstrap/layoutit/
 <br>
+基于bootstrap框架的静态HTML博客主题：https://github.com/imvicchen/vTheme
+<br>
