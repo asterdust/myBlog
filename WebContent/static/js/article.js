@@ -12,32 +12,6 @@ function getXHR(){
     }
     return xmlhttp;
 }
-/**
- * 点赞这个ariticle
- * @param article_id
- */
-function love_article(article_id){
-    var url = "/AriStarServlet?id="+article_id ;
-    // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            res = eval('(' + res + ')');
-            if (res.msg === "success") {
-                //返回 ”success“
-                document.getElementById("love").innerHTML= "&nbsp;"+ res.new_star+"&nbsp;";
-            }else{
-                alert("不要狂点呀...");
-            }
-        }
-    };
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
-}
-
 
 /*
  *删除评论
@@ -64,58 +38,6 @@ function deletecm(component,comm_id){
             }
             else {
                 alert("删除失败");
-            }
-        }
-    };
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
-}
-
-/**
- * 点击了star
- */
-function star(component , comm_id) {
-
-    var url = "/CMStarServlet?id="+comm_id ;
-    // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            res = eval('(' + res + ')');
-            if (res.msg === "success") {
-                //返回 ”success“
-                component.innerHTML = res.new_star;
-            }else{
-                alert("不要狂点呀...");
-            }
-        }
-    };
-    xmlhttp.open("POST", url, true);
-    xmlhttp.send();
-}
-
-/**
- * 点击了diss
- */
-function diss(component , comm_id) {
-
-    var url = "/CMDissServlet?id="+comm_id;
-    // 获取ajax
-    var xmlhttp = getXHR();
-    xmlhttp.onreadystatechange = function() {
-        if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
-            // 处理服务器收到的请求响应
-            var res = xmlhttp.responseText;
-            // 解析json对象
-            res = eval('(' + res + ')');
-            if (res.msg === "success") {
-                //返回 ”success“
-                component.innerHTML = res.new_diss;
-            }else{
-                alert("不要狂点呀...");
             }
         }
     };

@@ -9,7 +9,9 @@
 </head>
 
 <body>
-<jsp:include page="part/header.jsp"/>
+<jsp:include page="part/header.jsp">
+    <jsp:param value="0" name="current_index"/>
+</jsp:include>
 
 <div class="container vc-container">
     <div class="row">

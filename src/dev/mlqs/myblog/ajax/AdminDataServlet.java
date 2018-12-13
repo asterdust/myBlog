@@ -14,6 +14,7 @@ import dev.mlqs.myblog.service.AdminService;
 import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.StringUtils;
+import dev.mlqs.myblog.utils.ConfigUtils;
 
 @WebServlet("/AdminDataServlet")
 public class AdminDataServlet extends HttpServlet {
@@ -66,6 +67,17 @@ public class AdminDataServlet extends HttpServlet {
             case "tag_delete":
                 String tag = StringUtils.pareCode(request.getParameter("tag"));
                 as.deleteTag(tag);
+                break;
+            case "update_config":
+                String[] t;
+                for (Map.Entry<String, String[]> entry : ConfigUtils.getConfigUtils(this).des_map.entrySet()) {
+                    ConfigUtils.getConfigUtils(this).setValue(entry.getKey(), request.getParameter(entry.getKey()));
+                }
+                ConfigUtils.getConfigUtils(this).save();
+                ConfigUtils.getConfigUtils(this).refresh();
+                String site = "/AdminServlet";
+                response.setStatus(response.SC_MOVED_TEMPORARILY);
+                response.setHeader("Location", site);
                 break;
             default:
                 break;

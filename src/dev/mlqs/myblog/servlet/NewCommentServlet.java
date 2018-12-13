@@ -47,6 +47,11 @@ public class NewCommentServlet extends HttpServlet {
             // 获取对象
             try {
                 cm = Form2Bean.commentForm2Bean(request);
+                if (request.getParameter("admin_check") != null
+                        && request.getParameter("admin_check").equals("1")
+                        && request.getSession().getAttribute("user") != null) {
+                    cm.setAdmin(true);
+                }
                 CommentService cs = CommentService.getInstance();
                 boolean result = cs.addComment(cm);
                 if (!result) {

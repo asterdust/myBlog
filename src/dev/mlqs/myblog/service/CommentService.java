@@ -35,10 +35,6 @@ public class CommentService {
 		return dao.addComment(comment);
 	}
 
-	public int star_diss(int id, int star_or_diss) {
-		return dao.star_diss(id, star_or_diss);
-	}
-
 	public boolean deleteComment(int id) {
 		return dao.deleteComment(id);
 	}

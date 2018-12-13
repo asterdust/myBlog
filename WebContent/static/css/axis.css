@@ -1,0 +1,11 @@
+.longline_div {
+    border-left: 5px #16a085 solid;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.line_div {
+     border-left: 2px #1abc9c solid;
+     padding-left: 5px;
+ }

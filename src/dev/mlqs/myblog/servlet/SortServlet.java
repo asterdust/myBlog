@@ -1,7 +1,6 @@
 package dev.mlqs.myblog.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +11,6 @@ import javax.servlet.http.HttpServletResponse;
 import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 import dev.mlqs.myblog.utils.StringUtils;
-import dev.mlqs.myblog.utils.XMLUtils;
 
 @WebServlet("/SortServlet")
 public class SortServlet extends HttpServlet {
@@ -31,7 +29,6 @@ public class SortServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         doGet(request, response);
     }
 

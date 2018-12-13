@@ -13,6 +13,7 @@ import dev.mlqs.myblog.model.Article;
 import dev.mlqs.myblog.service.AdminService;
 import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.service.TagService;
+import dev.mlqs.myblog.utils.SideInfoUtils;
 
 /**
  * Servlet implementation class NewArticleServlet
@@ -20,30 +21,31 @@ import dev.mlqs.myblog.service.TagService;
 @WebServlet("/NewArticleServlet")
 public class NewArticleServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		if (request.getSession().getAttribute("user") == null) {
-			response.sendError(403);
-			return;
-		}
-		AdminService as = AdminService.getInstance();
-		Article result = as.addArticle(request);
-		request.setAttribute("article", result);
-		ArticleService ase = ArticleService.getInstance();
-		Map sort_count = ase.getSortAndCount();
-		request.setAttribute("sort_count", sort_count);
-		TagService tg = TagService.getInstance();
-		List all_tag = tg.getAllTag();
-		request.setAttribute("all_tag", all_tag);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendError(403);
+            return;
+        }
+        SideInfoUtils.setUp(request, this);
 
-		request.getRequestDispatcher("/admin/result.jsp").forward(request, response);
+        AdminService as = AdminService.getInstance();
+        Article result = as.addArticle(request);
+        request.setAttribute("article", result);
+        ArticleService ase = ArticleService.getInstance();
+        Map sort_count = ase.getSortAndCount();
+        request.setAttribute("sort_count", sort_count);
+        TagService tg = TagService.getInstance();
+        List all_tag = tg.getAllTag();
+        request.setAttribute("all_tag", all_tag);
 
-	}
+        request.getRequestDispatcher("/admin/result.jsp").forward(request, response);
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    }
+
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
 
 }

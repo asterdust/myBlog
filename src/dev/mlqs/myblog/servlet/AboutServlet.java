@@ -18,13 +18,10 @@ public class AboutServlet extends HttpServlet {
         SideInfoUtils.setUp(request, this);
 
         request.getRequestDispatcher("/about.jsp").forward(request, response);
-
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         doGet(request, response);
     }
-
 }

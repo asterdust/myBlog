@@ -9,7 +9,9 @@
 </head>
 
 <body>
-<jsp:include page="part/header.jsp"/>
+<jsp:include page="part/header.jsp">
+    <jsp:param value="-1" name="current_index"/>
+</jsp:include>
 
 <div class="container vc-container">
     <div class="row">
@@ -67,16 +69,22 @@
                             <li class="comment even thread-even depth-1 parent" id="comment-1">
                                 <div id="div-comment-1" class="comment-body">
                                     <div class="comment-author vcard">
-                                        <img src="https://www.gravatar.com/avatar/${comm.email_hash}?s=50&r=pg"
+                                        <img src="https://www.gravatar.com/avatar/${comm.email_hash}?s=50&r=${rating}"
                                              class="avatar avatar-50 photo avatar-default"
                                              height="50"
                                              width="50">
                                         <cite class="fn">
-                                            <c:if test="${comm.website!=null}">
-                                                <a href="${comm.website}" rel="external nofollow" class="url">${comm.nickname}</a>
-                                            </c:if>
-                                            <c:if test="${comm.website==null}">
-                                                <span class="url">${comm.nickname}</span>
+                                            <c:choose>
+                                                <c:when test="${comm.website!=null}">
+                                                    <a href="${comm.website}" rel="external nofollow" class="url">${comm.nickname}</a>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <span class="url">${comm.nickname}</span>
+                                                </c:otherwise>
+                                            </c:choose>
+
+                                            <c:if test="${comm.admin}">
+                                                <span class="vc-admin">管理员</span>
                                             </c:if>
                                         </cite>
                                         <time>${comm.time}</time>
@@ -87,8 +95,6 @@
                                     </div>
 
                                     <footer class="comment-footer">
-                                        <button onclick="star(this,${comm.id})">${comm.star}</button>
-                                        <button onclick="diss(this,${comm.id})">${comm.diss}</button>
                                         <c:if test="${sessionScope.user!=null}">
                                             <button class="comment-reply-link" style="color: red" onclick="deletecm(this,${comm.id})" aria-label="删除">删除</button>
                                         </c:if>
@@ -101,21 +107,36 @@
                 <div id="respond" class="comment-respond">
                     <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
                     <form action="/NewCommentServlet?id=${article.id}" method="post" id="commentform" class="comment-form">
-                        <p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span>必填项已用<span class="required">*</span>标注</p>
-                        <p class="comment-form-author">
-                            <label for="nickname">姓名 <span class="required">*</span>
-                            </label>
-                            <input id="nickname" name="nickname" type="text" value="" size="30" aria-required="true" required="required">
-                        </p>
-                        <p class="comment-form-email">
-                            <label for="email">电子邮件 <span class="required">*</span>
-                            </label>
-                            <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true" required="required">
-                        </p>
-                        <p class="comment-form-url">
-                            <label for="website">站点</label>
-                            <input id="website" name="website" type="text" value="" size="30">
-                        </p>
+                        <c:choose>
+                            <c:when test="${sessionScope.user==null}">
+                                <p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span>必填项已用<span class="required">*</span>标注</p>
+                                <p class="comment-form-author">
+                                    <label for="nickname">姓名 <span class="required">*</span>
+                                    </label>
+                                    <input id="nickname" name="nickname" type="text" value="" size="30" aria-required="true" required="required">
+                                </p>
+                                <p class="comment-form-email">
+                                    <label for="email">电子邮件 <span class="required">*</span>
+                                    </label>
+                                    <input id="email" name="email" type="text" size="30" aria-describedby="email-notes" aria-required="true" required="required">
+                                </p>
+                                <p class="comment-form-url">
+                                    <label for="website">站点</label>
+                                    <input id="website" name="website" type="text" value="" size="30">
+                                </p>
+                            </c:when>
+                            <c:otherwise>
+                                <input hidden name="nickname" value="${sessionScope.user.user_name}">
+                                <input hidden name="email" value="${sessionScope.user.email}">
+                                <input hidden name="website" value="">
+                                <input hidden name="admin_check" value="1">
+                                <img src="https://www.gravatar.com/avatar/${sessionScope.user.email_hash}?s=50&r=${rating}"
+                                     class="avatar avatar-50 photo avatar-default"
+                                     height="50"
+                                     width="50">
+                                <span>用户 ${sessionScope.user.user_name} 已登录</span>
+                            </c:otherwise>
+                        </c:choose>
                         <p class="comment-form-comment">
                             <label for="content">评论</label>
                             <textarea id="content" name="content" rows="5" aria-describedby="form-allowed-tags" aria-required="true" required="required"></textarea>
@@ -131,6 +152,7 @@
         <jsp:include page="part/sideinfo.jsp"/>
     </div>
 </div>
+
 <jsp:include page="part/footer.jsp"/>
 <jsp:include page="part/tail.jsp"/>
 <script type="text/javascript" src="./static/js/article.js"></script>

@@ -6,10 +6,13 @@
 <head>
     <title>时间轴 - ${title}</title>
     <jsp:include page="part/front.jsp"/>
+    <link href="/static/css/axis.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
-<jsp:include page="part/header.jsp"/>
+<jsp:include page="part/header.jsp">
+    <jsp:param value="2" name="current_index"/>
+</jsp:include>
 
 <div class="container vc-container">
     <div class="row">
@@ -18,7 +21,7 @@
                 <c:choose>
                     <c:when test="${axis.id==0}">
                         <div class="longline_div">
-                            <div>${axis.year}</div>
+                            <h4>${axis.year}</h4>
                         </div>
                     </c:when>
                     <c:otherwise>

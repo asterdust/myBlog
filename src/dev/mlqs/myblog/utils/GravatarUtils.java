@@ -1,11 +1,11 @@
 package dev.mlqs.myblog.utils;
 
-import java.util.*;
 import java.io.*;
 import java.security.*;
+
 public class GravatarUtils {
 
-    public static String hex(byte[] array) {
+    private static String hex(byte[] array) {
         StringBuffer sb = new StringBuffer();
         for (int i = 0; i < array.length; ++i) {
             sb.append(Integer.toHexString((array[i]

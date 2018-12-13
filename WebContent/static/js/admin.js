@@ -71,7 +71,7 @@ function delet_sort(hod,sort){
     var input = findInputInClass("sort",sort);
 
     //remove 视图
-    var recorder = input.parentNode;
+    var recorder = input.parentNode.parentNode.parentNode;
     var recorder_parent = recorder.parentNode;
     recorder_parent.removeChild(recorder);
     //后台删除
@@ -125,7 +125,7 @@ function delet_tag(hod,tag){
 
     var input = findInputInClass("tags",tag);
     //remove 视图
-    var recorder = input.parentNode;
+    var recorder = input.parentNode.parentNode.parentNode;
     var recorder_parent = recorder.parentNode;
     recorder_parent.removeChild(recorder);
 

@@ -12,7 +12,6 @@ public class Article implements Comparable {
     private String author;
     private String sort;
     private String time;
-    private int star;
     private int comment;
     private int visit;
     private String content;
@@ -21,7 +20,7 @@ public class Article implements Comparable {
 
     }
 
-    public Article(int id, String title, String author, String sort, String time, int star, int comment, int visit,
+    public Article(int id, String title, String author, String sort, String time, int comment, int visit,
                    String content) {
         super();
         this.id = id;
@@ -29,7 +28,6 @@ public class Article implements Comparable {
         this.author = author;
         this.sort = sort;
         this.time = time;
-        this.star = star;
         this.comment = comment;
         this.visit = visit;
         this.content = content;
@@ -63,7 +61,7 @@ public class Article implements Comparable {
     @Override
     public String toString() {
         return "Article [id=" + id + ", title=" + title + ", author=" + author + ", sort=" + sort + ", time=" + time
-                + ", star=" + star + ", comment=" + comment + ", visit=" + visit + ", content=" + content + "]";
+                + ", comment=" + comment + ", visit=" + visit + ", content=" + content + "]";
     }
 
     public void setId(int id) {
@@ -100,14 +98,6 @@ public class Article implements Comparable {
 
     public void setTime(String time) {
         this.time = time;
-    }
-
-    public int getStar() {
-        return star;
-    }
-
-    public void setStar(int star) {
-        this.star = star;
     }
 
     public int getComment() {

@@ -6,8 +6,8 @@
 <head>
 </head>
 <body>
-<script type="text/javascript" src="../static/js/jquery.min.js"></script>
-<script type="text/javascript" src="../static/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-ui-bootstrap/0.5pre/assets/js/jquery-1.9.0.min.js"></script>
+<script type="text/javascript" src="https://cdn.bootcss.com/jquery-ui-bootstrap/0.5pre/assets/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="../static/js/base.js"></script>
 <script src="http://cdn.bootcss.com/holder/2.6.0/holder.min.js"></script>
 </body>

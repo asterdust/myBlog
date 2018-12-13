@@ -6,6 +6,7 @@ import dev.mlqs.myblog.service.TagService;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Map;
 
 public class SideInfoUtils {
 
@@ -30,10 +31,10 @@ public class SideInfoUtils {
         request.setAttribute("member", VisitorDB.totalMember());
 
         // 读取主页信息
-        ArrayList<String[]> list = XMLUtils.getNodeList(_this.getClass().getResource("/").getPath() + "blog-info.xml");
-        assert list != null;
-        for (String[] vs : list) {
-            request.setAttribute(vs[0], vs[1]);
+        for (Map.Entry<String, String[]> entry : ConfigUtils.getConfigUtils(_this).des_map.entrySet()) {
+            request.setAttribute(entry.getKey(), entry.getValue()[2]);
         }
     }
+
+
 }

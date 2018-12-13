@@ -1,15 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<root>
-    <item key="title" value="MLQS Blog">
-    </item>
-    <item key="subtitle" value="MLQS 测试博客">
-    </item>
-    <item key="description" value="用于展示">
-    </item>
-    <item key="owner_name" value="MLQS team">
-    </item>
-    <item key="head_img" value="https://q2.qlogo.cn/headimg_dl?dst_uin=714813010&amp;spec=640">
-    </item>
-    <item key="logo" value="/static/img/logo.png">
-    </item>
-</root>
+title=MLQS Blog
+subtitle=MLQS 测试博客
+description=用于展示
+owner_name=MLQS team
+head_img=https://q2.qlogo.cn/headimg_dl?dst_uin=714813010&amp;spec=640
+logo=/static/img/logo.png
+img_random_url=https://img.xjh.me/random_img.php?type=bg&amp;ctype=nature&amp;return=302

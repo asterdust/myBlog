@@ -4,12 +4,14 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="zh_CN">
 <head>
-    <title>${article.title} - ${title}</title>
+    <title>分类 - ${title}</title>
     <jsp:include page="part/front.jsp"/>
 </head>
 
 <body>
-<jsp:include page="part/header.jsp"/>
+<jsp:include page="part/header.jsp">
+    <jsp:param value="1" name="current_index"/>
+</jsp:include>
 
 <div class="container vc-container">
     <div class="row">
@@ -26,9 +28,7 @@
                             <c:forEach var="list" items="${map.value}">
                                 <li class="list-group-item">
                                     <div>
-                                        <div>
-                                            <a href="/ArticleServlet?id=${list.id}">${list.title}</a>
-                                        </div>
+                                        <a href="/ArticleServlet?id=${list.id}">${list.title}</a>
                                         <div class="clearfix pull-right">
                                             <time>${list.time}</time> &bull; <span>${list.visit}次浏览</span>
                                         </div>

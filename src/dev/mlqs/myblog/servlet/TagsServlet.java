@@ -1,7 +1,6 @@
 package dev.mlqs.myblog.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -11,7 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 import dev.mlqs.myblog.utils.StringUtils;
-import dev.mlqs.myblog.utils.XMLUtils;
 
 @WebServlet("/TagsServlet")
 public class TagsServlet extends HttpServlet {

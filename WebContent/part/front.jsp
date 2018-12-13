@@ -10,13 +10,13 @@
     <meta name="description" content="${description}">
     <link rel="Bookmark" href="favicon.ico">
     <link rel="Shortcut Icon" href="favicon.ico" />
-    <link href="../static/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="../static/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.bootcss.com/jquery-ui-bootstrap/0.5pre/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.bootcss.com/jquery-ui-bootstrap/0.5pre/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="../static/css/rewrite-bootstrap.css" rel="stylesheet">
     <link href="../static/css/style.css" rel="stylesheet" type="text/css" />
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="../static/js/html5.js"></script>
-    <script type="text/javascript" src="../static/js/respond.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
+    <script type="text/javascript" src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 </head>
 <body>

@@ -2,9 +2,6 @@ package dev.mlqs.myblog.model;
 
 public class Comment {
 
-    public final static int STAR = 0;
-    public final static int DISS = 1;
-
     private int id;
     private int article_id;
     private String nickname;
@@ -13,13 +10,12 @@ public class Comment {
     private String email;
     private String email_hash;
     private String website;
-    private int star;
-    private int diss;
+    private boolean admin = false;
 
     @Override
     public String toString() {
         return "Comment [id=" + id + ", parent_id=" + article_id + ", nickname=" + nickname + ", content=" + content
-                + ", time=" + time + ", email=" + email + ", star=" + star + ", diss=" + diss + "]";
+                + ", time=" + time + ", email=" + email + ", admin=" + admin + "]";
     }
 
     public int getId() {
@@ -62,22 +58,6 @@ public class Comment {
         this.time = time;
     }
 
-    public int getStar() {
-        return star;
-    }
-
-    public void setStar(int star) {
-        this.star = star;
-    }
-
-    public int getDiss() {
-        return diss;
-    }
-
-    public void setDiss(int diss) {
-        this.diss = diss;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -102,4 +82,11 @@ public class Comment {
         this.website = website;
     }
 
+    public boolean isAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
 }

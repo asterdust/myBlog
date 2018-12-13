@@ -91,7 +91,7 @@ public class CommentDaoImpl implements CommentDao {
 	public boolean addComment(Comment comment) {
 
 		Connection conn = C3P0Connection.getInstance().getConnection();
-		String sql = "INSERT  INTO t_comment VALUES(null,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT  INTO t_comment VALUES(null,?,?,?,?,?,?,?)";
 		int result = 0;
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -101,8 +101,7 @@ public class CommentDaoImpl implements CommentDao {
 			ps.setString(4, comment.getTime());
 			ps.setString(5, comment.getEmail());
 			ps.setString(6, comment.getWebsite());
-			ps.setInt(7, comment.getStar());
-			ps.setInt(8, comment.getDiss());
+			ps.setBoolean(7, comment.isAdmin());
 			result = ps.executeUpdate();
 
 			// 文章加1评论
@@ -143,9 +142,8 @@ public class CommentDaoImpl implements CommentDao {
 				cm.setEmail(rs.getString("email"));
 				cm.setEmail_hash(GravatarUtils.md5Hex(cm.getEmail()));
 				cm.setWebsite(rs.getString("website"));
-				cm.setStar(rs.getInt("star"));
 				cm.setContent(rs.getString("content"));
-				cm.setDiss(rs.getInt("diss"));
+				cm.setAdmin(rs.getBoolean("admin"));
 				list.add(cm);
 			}
 			DBUtils.Close(ps, rs);
@@ -154,53 +152,5 @@ public class CommentDaoImpl implements CommentDao {
 			e.printStackTrace();
 		}
 		return list;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see blog.daoImpl.CommentDao#star_diss(int, int)
-	 */
-	@Override
-	public int star_diss(int id, int star_or_diss) {
-
-		String sql;
-
-		int result = -1;
-
-		if (star_or_diss == Comment.STAR) {
-			sql = "update t_comment set star=star+1 where id=" + id;
-		} else if (star_or_diss == Comment.DISS) {
-			sql = "update t_comment set diss=diss+1 where id=" + id;
-		} else {
-			return -1;
-		}
-
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.executeUpdate();
-			// DBUtils.Close(conn, ps);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		if (star_or_diss == Comment.STAR) {
-			sql = "SELECT star FROM t_comment WHERE id = " + id;
-		} else if (star_or_diss == Comment.DISS) {
-			sql = "SELECT diss FROM t_comment WHERE id = " + id;
-		}
-
-		try {
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				result = rs.getInt(1);
-			}
-
-			DBUtils.Close(ps, rs);
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return result;
 	}
 }

@@ -1,4 +1,4 @@
-﻿﻿$(document).ready(function(){
+﻿$(document).ready(function(){
     var _list = $(".toggle-button");
 
     for (var i = 0; i < _list.size(); ++i) {

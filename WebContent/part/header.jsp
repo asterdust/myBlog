@@ -23,13 +23,17 @@
 
             <div class="collapse navbar-collapse" id="vmenu">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/">首页</a>
+                    <li class="<%if(request.getParameter("current_index").equals("0")) out.print("active");%>">
+                        <a href="/">首页</a>
                     </li>
-                    <li><a href="/SortServlet?get=all">分类</a>
+                    <li class="<%if(request.getParameter("current_index").equals("1")) out.print("active");%>">
+                        <a href="/SortServlet?get=all">分类</a>
                     </li>
-                    <li><a href="/AxisServlet">时间轴</a>
+                    <li class="<%if(request.getParameter("current_index").equals("2")) out.print("active");%>">
+                        <a href="/AxisServlet">时间轴</a>
                     </li>
-                    <li><a href="/AboutServlet">关于</a>
+                    <li class="<%if(request.getParameter("current_index").equals("3")) out.print("active");%>">
+                        <a href="/AboutServlet">关于</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">更多 <span class="caret"></span></a>
@@ -42,7 +46,7 @@
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.user==null}">
-                                <li><a href="/login.html">登录</a>
+                                <li><a href="/Login">登录</a>
                                 </li>
                             </c:if>
                         </ul>
