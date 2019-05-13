@@ -1,8 +1,6 @@
 package dev.mlqs.myblog.model;
 
-/**
- * 类主要是 为Axis时间轴 的输出而设置的 一个Article类的简化版
- */
+
 public class AxisArticle {
 
 	private String title;

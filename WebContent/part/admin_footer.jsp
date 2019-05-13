@@ -11,8 +11,16 @@
         <nav class="pull-left">
             <ul class="nav">
                 <li class="nav-item">
+                    <p class="nav-link">powered by</p>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://blog.imiku.moe/">
+                        iMIKU.moe
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="http://themekita.com/ready-bootstrap-dashboard.html">
-                        powered by ThemeKita
+                        ThemeKita
                     </a>
                 </li>
             </ul>

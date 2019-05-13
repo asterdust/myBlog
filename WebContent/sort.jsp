@@ -28,7 +28,7 @@
                             <c:forEach var="list" items="${map.value}">
                                 <li class="list-group-item">
                                     <div>
-                                        <a href="/ArticleServlet?id=${list.id}">${list.title}</a>
+                                        <a href="/article?id=${list.id}">${list.title}</a>
                                         <div class="clearfix pull-right">
                                             <time>${list.time}</time> &bull; <span>${list.visit}次浏览</span>
                                         </div>
@@ -45,7 +45,7 @@
 </div>
 <jsp:include page="part/footer.jsp"/>
 <jsp:include page="part/tail.jsp"/>
-<script type="text/javascript" src="./static/js/toggle.js"></script>
+<script type="text/javascript" src="/static/js/toggle.js"></script>
 </body>
 
 </html>

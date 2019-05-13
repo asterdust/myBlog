@@ -28,7 +28,7 @@
                         <div class="line_div">
                             <div>
                                 <span class="time-tag">${axis.month}-${axis.day}</span>
-                                <a href="/ArticleServlet?id=${axis.id}">${axis.title}
+                                <a href="/article?id=${axis.id}">${axis.title}
                                 </a>
                             </div>
                         </div>

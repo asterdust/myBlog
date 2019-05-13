@@ -11,7 +11,7 @@ import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 
-@WebServlet("/ManageServlet")
+@WebServlet("/manage")
 public class ManageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -26,6 +26,18 @@ public class ManageServlet extends HttpServlet {
         ArticleService as;
         switch(request.getParameter("t")) {
             case "article":
+                int state = 0;
+                if (request.getParameter("t") != null) {
+                    switch (request.getParameter("t")) {
+                        case "suc":
+                            state = 1;
+                            break;
+                        case "fai":
+                            state = 2;
+                            break;
+                    }
+                }
+                request.setAttribute("state", state);
                 as = ArticleService.getInstance();
                 request.setAttribute("articles", as.getArticle());
                 request.getRequestDispatcher("/admin/mana_article.jsp").forward(request, response);
@@ -45,7 +57,6 @@ public class ManageServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
         doGet(request, response);
     }
 

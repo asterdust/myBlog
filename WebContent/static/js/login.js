@@ -26,21 +26,21 @@ function slideshow() {
         slideOn();
         setTimeout(function(){
             imgs[current + 1 >= imgs.length ? 0 : current + 1]
-                .setAttribute("src", "/ImageServlet?salt=" + Math.random());
+                .setAttribute("src", "/random_images?salt=" + Math.random());
         },1000);
         lock = !lock;
     }
 
     function timecheck () {
         if (pause) return;
-        if (!lock)time -= 1;
+        if (!lock) time -= 1;
         if (time <= -1) {
             time = 10;
             changeSlide();
         }
         timer.innerText = time;
     }
-    imgs[1].setAttribute("src", "/ImageServlet?salt=" + Math.random());
+    imgs[1].setAttribute("src", "/random_images?salt=" + Math.random());
     setInterval(timecheck, 1000);
 }
 
@@ -58,4 +58,12 @@ function swap () {
         play.setAttribute("src", "/static/img/play.png");
     }
     pause = !pause;
+}
+
+function checkInput() {
+    var password = document.getElementById('password');
+
+    password.value = sha256(password.value);
+    console.log(password.value);
+    return true;
 }

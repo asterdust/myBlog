@@ -1,6 +1,6 @@
 package dev.mlqs.myblog.model;
 
-import dev.mlqs.myblog.utils.GravatarUtils;
+import dev.mlqs.myblog.utils.SecurityUtils;
 
 public class User {
 
@@ -44,7 +44,7 @@ public class User {
     }
 
     public void setEmail(String email) {
-        this.email_hash = GravatarUtils.md5Hex(email);
+        this.email_hash = SecurityUtils.md5Hex(email);
         this.email = email;
     }
 

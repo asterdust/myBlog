@@ -47,7 +47,7 @@
 </div>
 <jsp:include page="part/footer.jsp"/>
 <jsp:include page="part/tail.jsp"/>
-<script type="text/javascript" src="./static/js/toggle.js"></script>
+<script type="text/javascript" src="/static/js/toggle.js"></script>
 </body>
 
 </html>

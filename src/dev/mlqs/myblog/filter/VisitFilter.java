@@ -17,12 +17,12 @@ import javax.servlet.http.HttpServletResponse;
 import dev.mlqs.myblog.db.VisitorDB;
 import dev.mlqs.myblog.utils.DateUtils;
 
-//仅统计首页jsp的访问量
+
 @WebFilter(filterName = "VisitFilter", urlPatterns = { "*.jsp" })
 public class VisitFilter implements Filter {
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+		
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
@@ -34,7 +34,7 @@ public class VisitFilter implements Filter {
 		if (rq.getRequestURL().indexOf("index.jsp") != -1) {
 
 			synchronized (this) {
-				// System.out.println(rq.getRequestURI());
+				
 				Cookie[] cookies = rq.getCookies();
 				boolean visited = false;
 				if (cookies != null) {
@@ -48,12 +48,12 @@ public class VisitFilter implements Filter {
 				if (!visited) {
 					Thread t = new Thread(new Runnable() {
 						public void run() {
-							// 向数据库写入信息
+							
 							VisitorDB.visit(rq);
 
-							// 发送新的cookie
+							
 							Cookie c = new Cookie("myblog_visitor", DateUtils.getFormatDate(new Date()));
-							// cookie生命周60分钟
+							
 							c.setMaxAge(60 * 60);
 							c.setPath("");
 							rp.addCookie(c);
@@ -66,11 +66,9 @@ public class VisitFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	/**
-	 * @see Filter#init(FilterConfig)
-	 */
+	
 	public void init(FilterConfig fConfig) throws ServletException {
-		// TODO Auto-generated method stub
+		
 	}
 
 }

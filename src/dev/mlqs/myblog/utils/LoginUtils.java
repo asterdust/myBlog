@@ -12,7 +12,7 @@ public class LoginUtils {
     public static boolean login(HttpServletRequest request) {
 
         String username = request.getParameter("username");
-        String password = request.getParameter("password");
+        String password = SecurityUtils.String2SHA256(request.getParameter("password"), true);
 
         if (StringUtils.isEmpty(username) || StringUtils.isEmpty(password))
             return false;
@@ -22,7 +22,7 @@ public class LoginUtils {
         if (user == null)
             return false;
 
-        // 写入session
+        
         HttpSession session = request.getSession();
         session.setAttribute("user", user);
         return true;

@@ -20,6 +20,8 @@ form {
 
 .vc-footer {
     width: 100%;
+    position: absolute;
+    bottom: 0;
     background: transparent;
     color: #CCCCCC;
     text-shadow: #000000 1px 1px;
@@ -42,11 +44,12 @@ form {
 
 #frontground{
     z-index: 3;
+    position: absolute;
 }
 
 #midground{
-    position: fixed;
     z-index: 1;
+    position: absolute;
 }
 
 #background{

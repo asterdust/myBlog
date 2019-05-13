@@ -17,51 +17,24 @@
     <div class="row">
         <div class="col-sm-12 col-md-9">
             <div class="well well-sm text-center">
-                搜索关键字：胡同
-            </div>
-            <div class="thumbnail">
-                <div class="caption">
-                    <h1 class="vc-page-title"><a href="">胡同里的小太子</a></h1>
-                    <p class="vc-author-info">
-                        <time>2015-04-28</time> &bull; <span>Vic Chen</span> &bull; <span><a href="">27条评论</a></span>
-                    </p>
-                    <p class="hidden-xs">它是胡同里的常客，偶尔静静的在那里等待主人，偶尔惊扰周末睡懒觉的邻居，其实都没什么大不了，大家已经习...</p>
-                    <p class="clearfix">
-                        <a class="hidden-xs pull-right vc-more-link" href="" role="button">继续阅读 &raquo;</a>
-                        <span class="vc-tags">
-                                <a href="">我是标签</a>
-                                <a href="">我是标签2</a>
-                                <a href="">我是标签3</a>
-                            </span>
-                    </p>
-                </div>
+                搜索关键字：${s}
             </div>
 
-            <div class="thumbnail">
-                <div class="caption">
-                    <h1 class="vc-page-title"><a href="">重游潘家园，会老友</a></h1>
-                    <p class="vc-author-info">
-                        <time>2015-04-28</time> &bull; <span>Vic Chen</span> &bull; <span><a href="">27条评论</a></span>
-                    </p>
-                    <p class="hidden-xs">潘家园旧货市场位于北京东三环南路潘家园桥西南，占地4.85万平方米。市场分为地摊区、古建房区、古典家具区...</p>
-                    <p class="clearfix">
-                        <a class="hidden-xs pull-right vc-more-link" href="" role="button">继续阅读 &raquo;</a>
-                        <span class="vc-tags">
-                                <a href="">我是标签</a>
-                                <a href="">我是标签2</a>
-                                <a href="">我是标签3</a>
-                            </span>
-                    </p>
+            <c:forEach var="article" items="${article_list}" varStatus="i">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h1 class="vc-page-title"><a href="/article?id=${article.id}">${article.title}</a></h1>
+                        <p class="vc-author-info">
+                            <time>${article.time}</time> &bull; <span>${article.sort}</span> &bull; <span>${article.visit}次浏览</span>
+                        </p>
+                        <p class="hidden-xs">${article.content.replaceAll("< ?img.*>", "")}</p>
+                        <p class="clearfix">
+                            <a class="hidden-xs pull-right vc-more-link" href="/article?id=${article.id}" role="button">继续阅读 &raquo;</a>
+                            <a href="">${article.sort}</a>
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <nav>
-                <ul class="pager">
-                    <li class="previous"><a href="#"><i class="fa fa-angle-left"></i> Older</a>
-                    </li>
-                    <li class="next"><a href="#">Newer <i class="fa fa-angle-right"></i></a>
-                    </li>
-                </ul>
-            </nav>
+            </c:forEach>
         </div>
         <jsp:include page="part/sideinfo.jsp"/>
     </div>

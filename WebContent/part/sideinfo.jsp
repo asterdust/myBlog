@@ -9,15 +9,14 @@
 <div class="visible-lg visible-md col-md-3">
     <div class="panel panel-default">
         <div class="panel-body">
-            <form role="search">
+            <form role="search" action="/search">
                 <div class="form-group" style="margin-bottom:0;">
-                    <input type="text" class="form-control" placeholder="善于搜索...">
+                    <input type="text" name="s" class="form-control" placeholder="使用正则搜索...">
                 </div>
             </form>
         </div>
     </div>
     <div class="panel panel-default">
-        <%--<h4 class="vc-widget-title">主题声明</h4>--%>
         <div class="panel-body">
             <ul class="list-unstyled">
                 <li class="text-center">
@@ -39,7 +38,7 @@
             <ul class="list-unstyled">
 
                 <c:forEach var="a"  items="${visit_rank}">
-                    <li><a href="/ArticleServlet?id=${a.id}">${a.title}</a>
+                    <li><a href="/article?id=${a.id}">${a.title}</a>
                     </li>
                 </c:forEach>
             </ul>
@@ -52,7 +51,7 @@
             <ul class="list-unstyled">
                 <c:forEach var="t"  varStatus="status" items="${tag_list}" >
                     <li>
-                            <span class="vc-tags"><a href="/TagsServlet?get=${t.tag}">${t.tag}</a>
+                            <span class="vc-tags"><a href="/tags?get=${t.tag}">${t.tag}</a>
                             </span>
                     </li>
                 </c:forEach>

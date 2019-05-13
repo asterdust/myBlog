@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/AdminServlet")
+@WebServlet("/admin")
 public class AdminServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -22,7 +22,7 @@ public class AdminServlet extends HttpServlet {
             response.sendError(403);
             return;
         }
-        // 传网站的统计数据
+
         request.setAttribute("visited", VisitorDB.totalVisit());
         request.setAttribute("member", VisitorDB.totalMember());
 
@@ -34,14 +34,13 @@ public class AdminServlet extends HttpServlet {
 
         request.setAttribute("des_map", ConfigUtils.getConfigUtils(this).des_map);
         SideInfoUtils.setUp(request, this);
-
-        // 转发
+        
         request.getRequestDispatcher("/admin/admin.jsp").forward(request, response);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        
         doGet(request, response);
     }
 }

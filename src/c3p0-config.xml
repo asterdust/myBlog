@@ -1,17 +1,10 @@
 <c3p0-config>
-	<!-- 数据库连接池配置信息 -->
-
-    <!-- 数据库名称: myblog -->
-    <!-- 数据库用户名字: root -->
-    <!-- 数据库密码: 123456 -->
-
-    <!-- 请根据实际在下面配置中修改你的配置信息 -->
     <default-config>
         <!-- 连接四大参数配置 -->
-        <property name="jdbcUrl">jdbc:mysql://192.168.146.130:3306/myblog?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8</property>
+        <property name="jdbcUrl">jdbc:mysql://ip:3306/myblog?useSSL=false&amp;useUnicode=true&amp;characterEncoding=utf-8</property>
         <property name="driverClass">com.mysql.jdbc.Driver</property>
-        <property name="user">delichik</property>
-        <property name="password">123456789</property>
+        <property name="user">user</property>
+        <property name="password">password</property>
         <!-- 池参数配置 -->
         <property name="acquireIncrement">5</property>
         <property name="initialPoolSize">20</property>

@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-7 d-flex align-items-center">
                                         <div class="numbers">
-                                            <a class="card-category" href="/ManageServlet?t=article">文章</a>
+                                            <a class="card-category" href="/manage?t=article">文章</a>
                                             <h4 class="card-title">${article_count}</h4>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="col-7 d-flex align-items-center">
                                         <div class="numbers">
-                                            <a class="card-category" href="/ManageServlet?t=sort">分类</a>
+                                            <a class="card-category" href="/manage?t=sort">分类</a>
                                             <h4 class="card-title">${sort_count}</h4>
                                         </div>
                                     </div>
@@ -79,12 +79,12 @@
                                 <div class="row">
                                     <div class="col-5">
                                         <div class="icon-big text-center">
-                                            <i class="la la-check-circle"></i>
+                                            <i class="la la-th"></i>
                                         </div>
                                     </div>
                                     <div class="col-7 d-flex align-items-center">
                                         <div class="numbers">
-                                            <a class="card-category" href="/ManageServlet?t=tag">标签</a>
+                                            <a class="card-category" href="/manage?t=tag">标签</a>
                                             <h4 class="card-title">${tag_count}</h4>
                                         </div>
                                     </div>
@@ -94,14 +94,13 @@
                     </div>
                 </div>
                 <div class="row">
-
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
                                 <h4 class="card-title">设置</h4>
                                 <p class="card-category">修改博客设置</p>
                             </div>
-                            <form action="/AdminDataServlet" method="post">
+                            <form action="/data" method="post">
                                 <div class="card-body">
                                     <input hidden="hidden" name="op" value="update_config"/>
                                     <c:forEach items="${des_map}" var="entry">
@@ -122,35 +121,12 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <jsp:include page="../part/admin_footer.jsp"/>
     </div>
 </div>
-
-<!-- Modal -->
-<!--
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="modalUpdatePro" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header bg-primary">
-                <h6 class="modal-title"><i class="la la-frown-o"></i> Under Development</h6>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">×</span>
-                </button>
-            </div>
-            <div class="modal-body text-center">
-                <p>Currently the pro version of the <b>Ready Dashboard</b> Bootstrap is in progress development</p>
-                <p>
-                    <b>We'll let you know when it's done</b></p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            </div>
-        </div>
-    </div>
-</div>
--->
 <jsp:include page="../part/admin_tail.jsp"/>
 
 </div>

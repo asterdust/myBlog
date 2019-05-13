@@ -20,8 +20,7 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">文章</h4>
-                                <p class="card-category">管理文章</p>
+                                <h4 class="card-title">标签管理</h4>
                             </div>
                             <div class="card-body">
 

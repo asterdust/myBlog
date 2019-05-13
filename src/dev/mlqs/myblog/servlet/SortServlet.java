@@ -12,7 +12,7 @@ import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 import dev.mlqs.myblog.utils.StringUtils;
 
-@WebServlet("/SortServlet")
+@WebServlet("/sort")
 public class SortServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

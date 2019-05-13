@@ -31,7 +31,7 @@ public class Article implements Comparable {
         this.comment = comment;
         this.visit = visit;
         this.content = content;
-//        this.content_safe = check(content);
+
     }
 
     @Override
@@ -45,7 +45,7 @@ public class Article implements Comparable {
                 this_date = DateUtils.getDate(this.time);
                 other_date = DateUtils.getDate(article.getTime());
             } catch (ParseException e) {
-                // TODO Auto-generated catch block
+                
                 e.printStackTrace();
             }
 

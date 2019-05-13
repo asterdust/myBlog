@@ -10,29 +10,30 @@ import javax.servlet.http.HttpServletResponse;
 import dev.mlqs.myblog.model.Article;
 import dev.mlqs.myblog.service.AdminService;
 
-/**
- * Servlet implementation class UpdateServlet
- */
-@WebServlet("/UpdateServlet")
+
+@WebServlet("/update")
 public class UpdateServlet extends HttpServlet {
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		if (request.getSession().getAttribute("user") == null) {
-			response.sendError(403);
-			return;
-		}
-		AdminService as = AdminService.getInstance();
-		Article result = as.updateArticle(request);
-		request.setAttribute("article", result);
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+        if (request.getSession().getAttribute("user") == null) {
+            response.sendError(403);
+            return;
+        }
+        AdminService as = AdminService.getInstance();
+        Article result = as.updateArticle(request);
 
-		request.getRequestDispatcher("/admin/result.jsp").forward(request, response);
-	}
+        response.setStatus(response.SC_MOVED_TEMPORARILY);
+        if (result != null)
+            response.setHeader("Location", "/manage?t=article&t=suc");
+        else
+            response.setHeader("Location", "/manage?t=article&t=fai");
+    }
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws IOException {
+
+        doGet(request, response);
+    }
 
 }

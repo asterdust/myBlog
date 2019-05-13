@@ -6,6 +6,12 @@
 <head>
     <title>关于 - ${title}</title>
     <jsp:include page="part/front.jsp"/>
+    <style>
+       .panel > .container {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 
 <body>
@@ -18,87 +24,42 @@
         <div class="col-sm-12 col-md-9">
             <div class="panel panel-default">
                 <div class="container">
-                    <div class="row c_center">
-                        <div class="col-md-12 column">
+                    <div class="row clearfix">
+                        <div class="col-md-8 column text-center">
+                            <dl>
+                                <dt>
+                                    <h5>感谢以下开源项目或工具的支持</h5>
+                                </dt>
+                                <dd>
+                                    Gravatar: 全球公认的头像 - <a href="http://cn.gravatar.com/site/implement/">官网</a>
+                                </dd>
+                                <dd>
+                                    editor.md: markdown 编辑与显示工具 - <a href="https://github.com/pandao/editor.md">github</a>
+                                </dd>
+                                <dd>
+                                    菜鸟可视化编辑器: 布局构成 - <a href="http://www.runoob.com/try/bootstrap/layoutit/">官网</a>
+                                </dd>
+                                <dd>
+                                    let's encrypt: SSL证书 - <a href="https://letsencrypt.org/">官网</a>
+                                </dd>
+                                <dd>
+                                    sha256.js: sha256加密 - <a href="https://github.com/emn178/js-sha256">github</a>
+                                </dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="container">
+                    <div class="row clearfix">
+                        <div class="col-md-8 column text-center">
                             <h5>
-                                关于开发者们
+                                MLQS team & iMIKU.moe 版权所有
                             </h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row clearfix">
-                        <div class="col-md-3 column"></div>
-                        <div class="col-md-2 column">
-                            <dl>
-                                <dt>
-                                    姓名
-                                </dt>
-                                <dd>
-                                    XXX
-                                </dd>
-                                <dt>
-                                    职位
-                                </dt>
-                                <dd>
-                                    XXX
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-2 column">
-                            <dl>
-                                <dt>
-                                    姓名
-                                </dt>
-                                <dd>
-                                    XXX
-                                </dd>
-                                <dt>
-                                    职位
-                                </dt>
-                                <dd>
-                                    XXX
-                                </dd>
-                            </dl>
-                        </div>
-                        <div class="col-md-2 column">
-                            <dl>
-                                <dt>
-                                    姓名
-                                </dt>
-                                <dd>
-                                    XXX
-                                </dd>
-                                <dt>
-                                    职位
-                                </dt>
-                                <dd>
-                                    XXX
-                                </dd>
-                            </dl>
-                        </div>
-                    </div>
-                </div>
-                <div class="container">
-                    <div class="row clearfix">
-                        <div class="col-md-4 column">
-                            <dl>
-                                <dt>
-                                    感谢以下开源项目或工具的支持
-                                </dt>
-                                <dd>
-                                    javaee-blog: <a href="https://github.com/Lemonreds/javaee-blog">github</a>
-                                </dd>
-                                <dd>
-                                    Gravatar: <a href="http://cn.gravatar.com/site/implement/">官网</a>
-                                </dd>
-                                <dd>
-                                    editor.md: <a href="https://github.com/pandao/editor.md">github</a>
-                                </dd>
-                                <dd>
-                                    菜鸟可视化编辑器: <a href="http://www.runoob.com/try/bootstrap/layoutit/">官网</a>
-                                </dd>
-                            </dl>
+                            <p>基于 MIT 协议开源于</p>
+                            <p>
+                                Github: <a href="https://github.com/asterdust/myBlog">https://github.com/asterdust/myBlog</a>
+                            </p>
                         </div>
                     </div>
                 </div>

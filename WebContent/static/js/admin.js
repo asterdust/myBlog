@@ -57,7 +57,7 @@ function delete_article(hod , article_id){
     var recorder_parent = recorder.parentNode;
     recorder_parent.removeChild(recorder);
     //send
-    var url = "/AdminDataServlet?op=delete_article"+"&&article_id="+article_id;
+    var url = "/data?op=delete_article"+"&&article_id="+article_id;
     sendURL(url);
 }
 
@@ -75,7 +75,7 @@ function delet_sort(hod,sort){
     var recorder_parent = recorder.parentNode;
     recorder_parent.removeChild(recorder);
     //后台删除
-    var url = "/AdminDataServlet?op=sort_delete"+"&&sort="+sort;
+    var url = "/data?op=sort_delete"+"&&sort="+sort;
     sendURL(url);
 }
 
@@ -110,7 +110,7 @@ function edit_sort(hod,sort){
         input.setAttribute("disabled","disabled");
 
         //提交修改请求
-        var url = "/AdminDataServlet?op=sort_update"+"&&old_sort="+temp+"&&new_sort="+input.value ;
+        var url = "/data?op=sort_update"+"&&old_sort="+temp+"&&new_sort="+input.value ;
         sendURL(url);
     }
 }
@@ -130,7 +130,7 @@ function delet_tag(hod,tag){
     recorder_parent.removeChild(recorder);
 
     //后台删除
-    var url = "/AdminDataServlet?op=tag_delete"+"&&tag="+tag;
+    var url = "/data?op=tag_delete"+"&&tag="+tag;
     sendURL(url)
 }
 
@@ -160,13 +160,100 @@ function edit_tag(hod,tag){
         input_t.value=temp_t;
         //修改hod内容为保存
         hod.innerHTML="保存";
-    }else{
+    }else {
         //点击了保存
-        hod.innerHTML="编辑";
-        input_t.setAttribute("disabled","disabled");
+        hod.innerHTML = "编辑";
+        input_t.setAttribute("disabled", "disabled");
 
         //提交修改请求
-        var url = "/AdminDataServlet?op=tag_update"+"&&old_tag="+temp_t+"&&new_tag="+input_t.value ;
+        var url = "/data?op=tag_update" + "&&old_tag=" + temp_t + "&&new_tag=" + input_t.value;
         sendURL(url);
     }
+}
+
+function update_password(){
+    var password = $('#password').value;
+    var repassword = $('#repassword').value;
+    if (repassword !== password) return;
+    var old_password = $('#old_password').value;
+    password = sha256(password);
+    old_password = sha256(old_password);
+    var xmlhttp = getXHR();
+    xmlhttp.onreadystatechange = function() {
+		if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+            var res = xmlhttp.responseText;
+            if(res.msg.search("success")){
+                showNotifFai("修改成功");
+            }
+            else {
+                showNotifFai("修改失败");
+            }
+		}
+    };
+    xmlhttp.open("POST", "/data?op=update_password&password=" + password + "&old_password=" + old_password, true);
+    xmlhttp.send();
+}
+
+function showNotifFai (msg) {
+    $.notify({
+            icon: 'la la-bell',
+            title: '提醒',
+            message: msg
+        },
+        {
+            type: 'failure',
+            placement: {
+                from: "bottom",
+                align: "right"
+            },
+            time: 1000
+        });
+}
+
+function showNotifSuc (msg) {
+    $.notify({
+            icon: 'la la-bell',
+            title: '提醒',
+            message: msg
+        },
+        {
+            type: 'success',
+            placement: {
+                from: "bottom",
+                align: "right"
+            },
+            time: 1000
+        });
+}
+
+function showNotifFai () {
+    $.notify({
+            icon: 'la la-bell',
+            title: '提醒',
+            message: '文章提交失败'
+        },
+        {
+            type: 'failure',
+            placement: {
+                from: "bottom",
+                align: "right"
+            },
+            time: 1000
+        });
+}
+
+function showNotifSuc () {
+    $.notify({
+            icon: 'la la-bell',
+            title: '提醒',
+            message: '文章提交成功'
+        },
+        {
+            type: 'success',
+            placement: {
+                from: "bottom",
+                align: "right"
+            },
+            time: 1000
+        });
 }

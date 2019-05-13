@@ -11,7 +11,7 @@ import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 import dev.mlqs.myblog.utils.StringUtils;
 
-@WebServlet("/TagsServlet")
+@WebServlet("/tags")
 public class TagsServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

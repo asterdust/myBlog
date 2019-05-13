@@ -22,7 +22,7 @@
                 <h4 class="page-title">Dashboard</h4>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="/AdminDataServlet" method="post">
+                        <form action="/update" method="post">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">修改文章</h4>
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="card-action">
                                     <button class="btn btn-success" type="submit">提交</button>
-                                    <a class="btn btn-danger" href="/ManageServlet?t=article">取消</a>
+                                    <a class="btn btn-danger" href="/manage?t=article">取消</a>
                                 </div>
                             </div>
                         </form>

@@ -23,7 +23,7 @@
                 <h4 class="page-title">Dashboard</h4>
                 <div class="row">
                     <div class="col-md-12">
-                        <form action="/AdminDataServlet" method="post">
+                        <form action="/new_article" method="post">
                             <div class="card">
                                 <div class="card-header">
                                     <h4 class="card-title">修改文章</h4>

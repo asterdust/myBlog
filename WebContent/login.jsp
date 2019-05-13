@@ -10,29 +10,29 @@
 </head>
 
 <body>
-
-<div id="background">
-    <img class="active" src="/ImageServlet" />
+<div class="container" id="background">
+    <img class="active" src="/random_images" />
     <img src=""/>
 </div>
 
-<div class="midground">
+<div class="container" id="midground">
     <jsp:include page="/part/footer.jsp"/>
 </div>
 
-<div class="container frontground">
-    <div class="row filed">
+<div class="container" id="frontground">
+    <div class="container">
+    <div class="row filed" >
         <div class="col-sm-12 col-md-12">
             <h3 class="form-title">${title}</h3>
             <h6 class="form-title">${subtitle}</h6>
-            <form  action="/LoginServlet" method="post">
+            <form  action="/login" method="post" onsubmit="return checkInput()">
                 <div class="form-group">
                     <label for="username">用户名</label>
                     <input class="form-control" required type="text" id="username" name="username" maxlength="32"/>
                 </div>
                 <div class="form-group" >
                     <label for="password">密  码</label>
-                    <input class="form-control" required type="password" id="password" name="password" maxlength="32"/>
+                    <input class="form-control" required type="password" id="password" name="password" maxlength="64"/>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn" name="submit">登录</button>
@@ -43,8 +43,10 @@
             </div>
         </div>
     </div>
+    </div>
 </div>
 <jsp:include page="part/tail.jsp"/>
+<script type="text/javascript" src="/static/js/sha256.min.js"></script>
 <script type="text/javascript" src="/static/js/login.js"></script>
 </body>
 </html>

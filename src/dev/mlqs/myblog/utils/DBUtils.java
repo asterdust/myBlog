@@ -7,9 +7,7 @@ import java.sql.Statement;
 
 public class DBUtils {
 
-	/**
-	 * 关闭数据库连接
-	 */
+	
 
 	public static void Close(Statement st) throws SQLException {
 

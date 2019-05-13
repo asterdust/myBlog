@@ -16,10 +16,8 @@ import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 
-/**
- * Servlet implementation class AddServlet
- */
-@WebServlet("/AddServlet")
+
+@WebServlet("/add")
 public class AddServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -28,17 +26,17 @@ public class AddServlet extends HttpServlet {
             response.sendError(403);
             return;
         }
-        SideInfoUtils.setUp(request, this);
 
-        // 初始化时间
+        SideInfoUtils.setUp(request, this);
+        
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         Date date = new Date();
         request.setAttribute("time", df.format(date));
-        // 获取分类
+        
         ArticleService as = ArticleService.getInstance();
         Map sort_count = as.getSortAndCount();
         request.setAttribute("sort_count", sort_count);
-        // 获取标签
+        
         TagService tg = TagService.getInstance();
         List all_tag = tg.getAllTag();
         request.setAttribute("all_tag", all_tag);

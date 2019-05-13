@@ -8,9 +8,9 @@
 <body>
 <div class="main-header">
     <div class="logo-header" style="width: 100% !important;">
-        <a href="/AdminServlet" class="logo">
-            DashBoard | <small>${title}</small>
-        </a>
+        <a href="/admin" class="logo">DashBoard</a>
+        <span class="logo"> | </span>
+        <a href="/" class="logo"><small>${title}</small></a>
     </div>
 </div>
 </body>

@@ -27,26 +27,26 @@
                         <a href="/">首页</a>
                     </li>
                     <li class="<%if(request.getParameter("current_index").equals("1")) out.print("active");%>">
-                        <a href="/SortServlet?get=all">分类</a>
+                        <a href="/sort?get=all">分类</a>
                     </li>
                     <li class="<%if(request.getParameter("current_index").equals("2")) out.print("active");%>">
-                        <a href="/AxisServlet">时间轴</a>
+                        <a href="/axis">时间轴</a>
                     </li>
                     <li class="<%if(request.getParameter("current_index").equals("3")) out.print("active");%>">
-                        <a href="/AboutServlet">关于</a>
+                        <a href="/about">关于</a>
                     </li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">更多 <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
                             <c:if test="${sessionScope.user!=null}">
-                                <li><a href="/AdminServlet">后台</a>
+                                <li><a href="/admin">后台</a>
                                 </li>
                                 <li class="divider"></li>
-                                <li><a href="/LogoutServlet">退出</a>
+                                <li><a href="/logout">退出</a>
                                 </li>
                             </c:if>
                             <c:if test="${sessionScope.user==null}">
-                                <li><a href="/Login">登录</a>
+                                <li><a href="/go_login">登录</a>
                                 </li>
                             </c:if>
                         </ul>

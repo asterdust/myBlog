@@ -11,7 +11,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Map;
 
-@WebServlet("/ImageServlet")
+@WebServlet("/random_images")
 public class ImageServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) {

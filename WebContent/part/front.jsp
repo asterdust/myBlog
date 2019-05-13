@@ -8,12 +8,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
     <meta name="description" content="${description}">
-    <link rel="Bookmark" href="favicon.ico">
-    <link rel="Shortcut Icon" href="favicon.ico" />
-    <link href="https://cdn.bootcss.com/jquery-ui-bootstrap/0.5pre/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link href="https://cdn.bootcss.com/jquery-ui-bootstrap/0.5pre/assets/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="../static/css/rewrite-bootstrap.css" rel="stylesheet">
-    <link href="../static/css/style.css" rel="stylesheet" type="text/css" />
+    <link rel="Bookmark" href="/static/icon/favicon.ico">
+    <link rel="Shortcut Icon" href="/static/icon/favicon.ico" />
+    <link href="/static/css/bootstrap3.min.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.css" rel="stylesheet" type="text/css">
+    <link href="/static/css/rewrite-bootstrap.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet" type="text/css" />
     <!--[if lt IE 9]>
     <script type="text/javascript" src="https://cdn.bootcss.com/html5shiv/r29/html5.min.js"></script>
     <script type="text/javascript" src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>

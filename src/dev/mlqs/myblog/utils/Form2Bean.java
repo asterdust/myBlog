@@ -26,7 +26,7 @@ public class Form2Bean {
         bean.setArticle_id(id);
         bean.setNickname(nickname);
         bean.setEmail(email);
-        bean.setEmail_hash(GravatarUtils.md5Hex(email));
+        bean.setEmail_hash(SecurityUtils.md5Hex(email));
         bean.setWebsite(website);
         bean.setContent(content);
         if (vilidate(bean)) {
@@ -54,7 +54,7 @@ public class Form2Bean {
         value.put("time", request.getParameter("time"));
         value.put("author", request.getParameter("author"));
         value.put("sort", request.getParameter("sort"));
-        // String tags = request.getParameter("tags");
+        
         value.put("content", request.getParameter("content"));
         value.put("star", 0);
         value.put("comment", 0);

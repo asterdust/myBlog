@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import dev.mlqs.myblog.service.CommentService;
 import net.sf.json.JSONObject;
 
-/**
- * Servlet implementation class CMDeleServlet
- */
+
 @WebServlet("/CMDeleServlet")
 public class CMDeleServlet extends HttpServlet {
 
@@ -27,9 +25,9 @@ public class CMDeleServlet extends HttpServlet {
             response.setHeader("Location", site);
             return;
         }
-        // 业务操作 获取评论id
+        
         String id = request.getParameter("id");
-        // 返回的数据
+        
         CommentService cs = CommentService.getInstance();
         boolean b = cs.deleteComment(Integer.parseInt(id));
         if (b) {
@@ -37,13 +35,13 @@ public class CMDeleServlet extends HttpServlet {
         } else {
             jo.put("msg", "fail");
         }
-        // 写回ajax
+        
         response.getWriter().println(jo);
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        // TODO Auto-generated method stub
+        
         doGet(request, response);
     }
 

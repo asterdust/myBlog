@@ -19,17 +19,17 @@
             <c:forEach var="article" items="${article_list}" varStatus="i">
                 <div class="thumbnail">
                     <div class="vc-pagelist-img">
-                        <a href="/ArticleServlet?id=${article.id}"><img src="${header_img_list.get(i.index)}" alt="demo image">
+                        <a href="/article?id=${article.id}"><img src="${header_img_list.get(i.index)}" alt="demo image">
                         </a>
                     </div>
                     <div class="caption">
-                        <h1 class="vc-page-title"><a href="/ArticleServlet?id=${article.id}">${article.title}</a></h1>
+                        <h1 class="vc-page-title"><a href="/article?id=${article.id}">${article.title}</a></h1>
                         <p class="vc-author-info">
                             <time>${article.time}</time> &bull; <span>${article.sort}</span> &bull; <span>${article.visit}次浏览</span>
                         </p>
                         <p class="hidden-xs">${article.content.replaceAll("< ?img.*>", "")}</p>
                         <p class="clearfix">
-                            <a class="hidden-xs pull-right vc-more-link" href="/ArticleServlet?id=${article.id}" role="button">继续阅读 &raquo;</a>
+                            <a class="hidden-xs pull-right vc-more-link" href="/article?id=${article.id}" role="button">继续阅读 &raquo;</a>
                             <a href="">${article.sort}</a>
                         </p>
                     </div>

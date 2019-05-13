@@ -15,36 +15,28 @@ import dev.mlqs.myblog.service.ArticleService;
 import dev.mlqs.myblog.service.TagService;
 import dev.mlqs.myblog.utils.SideInfoUtils;
 
-/**
- * Servlet implementation class NewArticleServlet
- */
-@WebServlet("/NewArticleServlet")
+
+@WebServlet("/new_article")
 public class NewArticleServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         if (request.getSession().getAttribute("user") == null) {
             response.sendError(403);
             return;
         }
-        SideInfoUtils.setUp(request, this);
 
         AdminService as = AdminService.getInstance();
         Article result = as.addArticle(request);
-        request.setAttribute("article", result);
-        ArticleService ase = ArticleService.getInstance();
-        Map sort_count = ase.getSortAndCount();
-        request.setAttribute("sort_count", sort_count);
-        TagService tg = TagService.getInstance();
-        List all_tag = tg.getAllTag();
-        request.setAttribute("all_tag", all_tag);
-
-        request.getRequestDispatcher("/admin/result.jsp").forward(request, response);
-
+        response.setStatus(response.SC_MOVED_TEMPORARILY);
+        if (result != null)
+            response.setHeader("Location", "/manage?t=article&t=suc");
+        else
+            response.setHeader("Location", "/manage?t=article&t=fai");
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+            throws IOException {
         doGet(request, response);
     }
 

@@ -29,7 +29,7 @@
                     </div>
                     <span class="vc-tags">
                         <c:forEach var="t" items="${article_tags}">
-                            <a href="/TagsServlet?get=${t.tag}">${t.tag}</a>
+                            <a href="/tags?get=${t.tag}">${t.tag}</a>
                         </c:forEach>
                     </span>
                     <%--<div class="vc-copyright">--%>
@@ -42,7 +42,7 @@
                     <li class="previous">
                         <c:choose>
                             <c:when test="${article_pre!=null}">
-                                <a href="/ArticleServlet?id=${article_pre.id}"><i class="fa fa-angle-left"></i> 上一篇:${article_pre.title}</a>
+                                <a href="/article?id=${article_pre.id}"><i class="fa fa-angle-left"></i> 上一篇:${article_pre.title}</a>
                             </c:when>
                             <c:otherwise>
                                 <span style="cursor: no-drop"><i class="fa fa-angle-left"></i> 没有了</span>
@@ -52,7 +52,7 @@
                     <li class="next">
                         <c:choose>
                             <c:when test="${article_next!=null}">
-                                <a href="/ArticleServlet?id=${article_next.id}">下一篇:${article_next.title} <i class="fa fa-angle-right"></i></a>
+                                <a href="/article?id=${article_next.id}">下一篇:${article_next.title} <i class="fa fa-angle-right"></i></a>
                             </c:when>
                             <c:otherwise>
                                 <span style="cursor: no-drop">没有了 <i class="fa fa-angle-right"></i></span>
@@ -106,7 +106,7 @@
                 </ol>
                 <div id="respond" class="comment-respond">
                     <h3 id="reply-title" class="comment-reply-title">发表评论</h3>
-                    <form action="/NewCommentServlet?id=${article.id}" method="post" id="commentform" class="comment-form">
+                    <form action="/new_comment?id=${article.id}" method="post" id="commentform" class="comment-form">
                         <c:choose>
                             <c:when test="${sessionScope.user==null}">
                                 <p class="comment-notes"><span id="email-notes">电子邮件地址不会被公开。</span>必填项已用<span class="required">*</span>标注</p>

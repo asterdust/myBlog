@@ -20,25 +20,23 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 import net.sf.json.JSONObject;
 
-/**
- * Servlet implementation class Test
- */
+
 @WebServlet("/UploadPic")
 public class UploadPic extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		// 返回的json
+		
 		JSONObject jo = new JSONObject();
 
-		// 文件的保存目录
+		
 		String savePath = this.getServletContext().getRealPath("/upload");
 		File saveFileDir = new File(savePath);
 		if (!saveFileDir.exists()) {
 			saveFileDir.mkdirs();
 		}
-		// 临时文件保存目录
+		
 		String tmpPath = this.getServletContext().getRealPath("/upload/tem");
 		File tmpFile = new File(tmpPath);
 		if (!tmpFile.exists()) {
@@ -103,7 +101,7 @@ public class UploadPic extends HttpServlet {
 	}
 
 	private String makeFileName(String fileName) {
-		// 为防止文件覆盖的现象发生，要为上传文件产生一个唯一的文件名
+		
 		return UUID.randomUUID().toString().replaceAll("-", "") + "_" + fileName;
 
 	}

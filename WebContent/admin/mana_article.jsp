@@ -20,11 +20,10 @@
                     <div class="col-md-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">文章</h4>
-                                <p class="card-category">管理文章</p>
+                                <h4 class="card-title">管理文章</h4>
                             </div>
                             <div class="card-action">
-                                <a href="/AddServlet" class="btn btn-success">新文章</a>
+                                <a href="/add" class="btn btn-success">新文章</a>
                             </div>
                             <div class="card-body">
                                 <table class="table mt-3">
@@ -41,7 +40,7 @@
                                             <td>${a.title}</td>
                                             <td>${a.time}</td>
                                             <td>
-                                                <a class="btn btn-primary" href="/AdminDataServlet?op=edit_article&&article_id=${a.id}">编辑</a>
+                                                <a class="btn btn-primary" href="/data?op=edit_article&&article_id=${a.id}">编辑</a>
                                                 <button class="btn btn-danger" onclick="delete_article(this,'${a.id}')">删除</button>
                                             </td>
                                         </tr>
@@ -60,5 +59,12 @@
 <jsp:include page="../part/admin_tail.jsp"/>
 
 </div>
+
+<c:if test='${state.equals("1")}'>
+    <script>showNotifSuc();</script>
+</c:if>
+<c:if test='${!state.equals("2")}'>
+    <script>showNotifFai();</script>
+</c:if>
 </body>
 </html>
